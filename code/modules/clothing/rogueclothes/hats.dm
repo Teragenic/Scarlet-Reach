@@ -305,6 +305,7 @@
 	color = null
 	icon_state = "priesthead"
 	item_state = "priesthead"
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	dynamic_hair_suffix = ""
 	sewrepair = TRUE
@@ -2105,3 +2106,47 @@
 	sewrepair = TRUE
 	flags_inv = HIDEEARS
 	body_parts_covered = HEAD|HAIR|EARS|NOSE|EYES
+
+/obj/item/clothing/head/roguetown/loudmouth
+	name = "loudmouth's headcover"
+	desc = "Said to be worn by only the loudest and proudest. The mask is adjustable."
+	icon_state = "loudmouth"
+	item_state = "loudmouth"
+	detail_tag = "_detail"
+	flags_inv = HIDEHAIR|HIDEFACIALHAIR|HIDEFACE|HIDESNOUT
+	flags_cover = HEADCOVERSEYES
+	body_parts_covered = HEAD|HAIR|EARS|NECK|MOUTH|NOSE|EYES
+	adjustable = CAN_CADJUST
+	toggle_icon_state = TRUE
+	color = CLOTHING_RED
+	detail_color = CLOTHING_WHITE
+	blocksound = SOFTHIT
+	max_integrity = 100
+	sewrepair = TRUE
+
+/obj/item/clothing/head/roguetown/loudmouth/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
+
+/obj/item/clothing/head/roguetown/loudmouth/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/adjustable_clothing, (NECK|HEAD|EARS|HAIR), (HIDEEARS|HIDEHAIR), null, 'sound/foley/equip/cloak (3).ogg', null, (UPD_HEAD|UPD_MASK))	
+
+// new knight captain drip
+
+/obj/item/clothing/head/roguetown/helmet/visored/captain
+	name = "captain's helmet"
+	desc = "An elegant barbute, fitted with the gold trim and polished metal of nobility."
+	adjustable = CAN_CADJUST
+	icon = 'icons/roguetown/clothing/special/captain.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/captain.dmi'
+	icon_state = "capbarbute"
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDESNOUT
+
+/obj/item/clothing/head/roguetown/helmet/visored/captain/ComponentInitialize()
+	AddComponent(/datum/component/adjustable_clothing, (HEAD|EARS|HAIR), HIDEHAIR, null, 'sound/items/visor.ogg', null, UPD_HEAD)
