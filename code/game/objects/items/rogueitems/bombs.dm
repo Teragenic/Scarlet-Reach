@@ -118,7 +118,7 @@
     qdel(src)
 
 /obj/item/tntstick
-	name = "Blackpowder stick"
+	name = "blackpowder stick"
 	desc = "A bit of gunpowder in paper shell..."
 	icon_state = "dinamite"
 	var/lit_state = "dinamitelit"
@@ -186,7 +186,7 @@
 		explode(TRUE)
 
 /obj/item/satchel_bomb
-	name = "Bomb satchel"
+	name = "bomb satchel"
 	desc = "A satchel full of gunpowder..."
 	icon_state = "dinamitesatchel"
 	var/lit_state = "dinamitesatchellit"
@@ -242,7 +242,7 @@
 			if(!skipprob && prob(prob2fail))
 				snuff()
 			else
-				explosion(T, devastation_range = 5, heavy_impact_range = 3, light_impact_range = 10, hotspot_range = 1, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+				explosion(T, devastation_range = 5, heavy_impact_range = 3, light_impact_range = 3, flame_range = 2, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 
 				qdel(src)
 
@@ -257,7 +257,7 @@
 
 
 /obj/item/impact_grenade
-	name = "Impact grenade"
+	name = "impact grenade"
 	desc = "Some substance, hidden under paper"
 	icon_state = "impactgrenade"
 	icon = 'icons/roguetown/items/misc.dmi'
@@ -286,7 +286,7 @@
 		STOP_PROCESSING(SSfastprocess, src)
 		var/turf/T = get_turf(src)
 		if(T)
-			explosion(T, heavy_impact_range = 1, light_impact_range = 2, hotspot_range = 2, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+			explosion(T, heavy_impact_range = 1, light_impact_range = 1, flame_range = 2, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 			qdel(src)
 
 /obj/item/impact_grenade/smoke
@@ -314,7 +314,7 @@
 		qdel(src)
 
 /obj/item/impact_grenade/healing_gas
-	name = "Impact grenade"
+	name = "impact grenade"
 	desc = "Some substance, hidden under some paper and skin. The smell of this one reminds you the taste of red..."
 
 	explodes() 
@@ -326,7 +326,7 @@
 		qdel(src)
 
 /obj/item/impact_grenade/fire_gas
-	name = "Impact grenade"
+	name = "impact grenade"
 	desc = "Some substance, hidden under some paper and skin. Smells like a chicken and burns your hand..."
 
 	explodes() 
@@ -338,7 +338,7 @@
 		qdel(src)
 
 /obj/item/impact_grenade/blind_gas
-	name = "Impact grenade"
+	name = "impact grenade"
 	desc = "Some substance, hidden under some paper and skin. The smell that comes from this one makes your eyes to cry."
 
 	explodes() 
@@ -350,7 +350,7 @@
 		qdel(src)
 
 /obj/item/impact_grenade/mute_gas
-	name = "Impact grenade"
+	name = "impact grenade"
 	desc = "Some substance, hidden under some paper and skin. Smell of this one makes your mind clean and not able to say a word."
 
 	explodes() 
