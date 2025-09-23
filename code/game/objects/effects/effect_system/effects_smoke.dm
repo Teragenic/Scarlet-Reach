@@ -170,10 +170,10 @@
 	if(..())
 		if(HAS_TRAIT(M, TRAIT_HOLDBREATH))
 			return 0
-		M.adjustBruteLoss(-0.5, 0)
-		M.adjustFireLoss(-0.5, 0)
-		M.adjustOxyLoss(-0.5, 0)
-		M.adjustToxLoss(-0.5, 0)
+		M.adjustBruteLoss(-5, 0)
+		M.adjustFireLoss(-2, 0)
+		M.adjustOxyLoss(-1, 0)
+		M.adjustToxLoss(-1, 0)
 		M.emote("cough")
 		return 1
 
@@ -182,7 +182,7 @@
 
 
 /////////////////////////////////////////////
-// FIRE_GAS 
+// FIRE_GAS
 /////////////////////////////////////////////
 
 /obj/effect/particle_effect/smoke/fire_gas
