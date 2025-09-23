@@ -173,9 +173,7 @@
 			if(!skipprob && prob(prob2fail))
 				snuff()
 			else
-				explosion(T, devastation_range = 2, heavy_impact_range = 1, light_impact_range = 4, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
-				var/const/damage = 750
-				var/const/radius = 3
+				explosion(T, devastation_range = 2, heavy_impact_range = 3, light_impact_range = 4, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 				qdel(src) //go into walls /turf/closed/wall/ and see /turf/closed/wall/ex_act. Its bounded with /proc/explosion
 		else
 			if(prob(prob2fail))
@@ -243,9 +241,7 @@
 			if(!skipprob && prob(prob2fail))
 				snuff()
 			else
-				explosion(T, devastation_range = 5, heavy_impact_range = 3, light_impact_range = 3, flame_range = 2, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
-			var/const/damage = 1000 
-			var/const/radius = 5
+				explosion(T, devastation_range = 3, heavy_impact_range = 5, light_impact_range = 8, flame_range = 2, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 				qdel(src)
 
 		else
@@ -288,9 +284,7 @@
 		STOP_PROCESSING(SSfastprocess, src)
 		var/turf/T = get_turf(src)
 		if(T)
-			explosion(T, heavy_impact_range = 1, light_impact_range = 1, flame_range = 2, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
-			var/const/damage = 250
-			var/const/radius = 2
+			explosion(T, heavy_impact_range = 1, light_impact_range = 2, flame_range = 2, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 			qdel(src)
 
 /obj/item/impact_grenade/smoke

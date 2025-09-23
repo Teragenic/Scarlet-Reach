@@ -61,37 +61,62 @@
 //		new /obj/item/stack/sheet/metal(src)
 
 /turf/closed/wall/ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
-	if(target == src)
-		dismantle_wall(1,1)
-		take_damage(INFINITY, BRUTE, "bomb", 0)
+	if(isnull(epicenter))
+		if(target == src)
+			dismantle_wall(1, 1)
+			return
+		switch(severity)
+			if(EXPLODE_DEVASTATE)
+				var/turf/NT = ScrapeAway()
+				NT.contents_explosion(severity, target)
+				return
+			if(EXPLODE_HEAVY)
+				if(prob(50))
+					dismantle_wall(0,1)
+				else
+					dismantle_wall(1,1)
+			if(EXPLODE_LIGHT)
+				if(prob(hardness))
+					dismantle_wall(0,1)
 		return
-	var/ddist = devastation_range
-	var/hdist = heavy_impact_range
-	var/ldist = light_impact_range
-	var/fdist = flame_range
+
+	if(target == src)
+		dismantle_wall(1, 1)
+		return
+
+	var/ddist = max(0, devastation_range)
+	var/hdist = max(0, heavy_impact_range)
+	var/ldist = max(0, light_impact_range)
+	var/fdist = max(0, flame_range)
+
 	var/fodist = get_dist(src, epicenter)
+	var/dmgmod = CLAMP(round(rand(0.1, 2), 0.1), 0.1, 2)
+	var/extra_integrity_damage = 300
+
 	var/brute_loss = 0
-	var/dmgmod = round(rand(0.1, 2), 0.1)
+	switch(severity)
+		if(EXPLODE_DEVASTATE) brute_loss = (1500 + 250*ddist) - (250*fodist)*dmgmod
+		if(EXPLODE_HEAVY)     brute_loss = (100*hdist) - (100*fodist)*dmgmod
+		if(EXPLODE_LIGHT)     brute_loss = (25*ldist) - (25*fodist)*dmgmod
 
-	switch (severity)
-		if (EXPLODE_DEVASTATE)
-			brute_loss = ((1500+250 * ddist) - (250 * fodist) * dmgmod) //we are not supposed to use it A LOT. Devastate is supposed to be LOW in your EXPLOSIONS WE USE IT TO BREAK STURCTURES NOT TO MASS MURDER PLAYERS
-
-		if (EXPLODE_HEAVY)
-			brute_loss = ((100 * hdist) - (100 * fodist) * dmgmod)
-
-		if(EXPLODE_LIGHT)
-			brute_loss = ((25 * ldist) - (25 * fodist) * dmgmod)
+	if(total_damage > 0 && !QDELETED(src))
+		take_damage(total_damage, BRUTE, "bomb", 0)
+		
 
 	if(fodist == 0)
 		brute_loss *= 2
-	take_damage(brute_loss, BRUTE, "bomb", 0)
+
+	brute_loss = round(CLAMP(brute_loss, 0, max_integrity))
+
+	if(brute_loss > 0 && !QDELETED(src))
+		take_damage(brute_loss, BRUTE, "bomb", 0)
 
 	if(fdist && !QDELETED(src))
-		var/stacks = ((fdist - fodist) * 2)
-		fire_act(stacks)
+		var/stacks = max(0, (fdist - fodist) * 2)
+		if(stacks > 0)
+			fire_act(stacks)
 
-	if(!density)
+	if(!QDELETED(src) && !density)
 		..()
 
 /turf/closed/wall/attack_paw(mob/living/user)
