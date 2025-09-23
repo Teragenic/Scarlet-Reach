@@ -80163,6 +80163,10 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/orc/orc_marauder/spear,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/under/cave/orcdungeon)
+"wIz" = (
+/obj/structure/roguemachine/duoface,
+/turf/closed/wall/mineral/rogue/stone,
+/area/rogue/outdoors/beach)
 "wIC" = (
 /obj/item/natural/stone{
 	pixel_y = -14
@@ -290880,7 +290884,7 @@ euk
 euk
 icp
 pFN
-icp
+wIz
 icp
 icp
 icp

@@ -91,7 +91,6 @@
 
 	var/fodist = get_dist(src, epicenter)
 	var/dmgmod = CLAMP(round(rand(0.1, 2), 0.1), 0.1, 2)
-	var/extra_integrity_damage = 300
 
 	var/brute_loss = 0
 	switch(severity)
@@ -99,17 +98,20 @@
 		if(EXPLODE_HEAVY)     brute_loss = (100*hdist) - (100*fodist)*dmgmod
 		if(EXPLODE_LIGHT)     brute_loss = (25*ldist) - (25*fodist)*dmgmod
 
-	if(total_damage > 0 && !QDELETED(src))
-		take_damage(total_damage, BRUTE, "bomb", 0)
-		
-
 	if(fodist == 0)
 		brute_loss *= 2
+	brute_loss = max(0, brute_loss)
 
-	brute_loss = round(CLAMP(brute_loss, 0, max_integrity))
+	var/extra_integrity = 300
+	switch(severity)
+		if(EXPLODE_DEVASTATE) extra_integrity = 1000
+		if(EXPLODE_HEAVY)     extra_integrity = 400
+		if(EXPLODE_LIGHT)     extra_integrity = 200
 
-	if(brute_loss > 0 && !QDELETED(src))
-		take_damage(brute_loss, BRUTE, "bomb", 0)
+	var/total_damage = round(CLAMP(brute_loss + extra_integrity, 0, max_integrity))
+
+	if(total_damage > 0 && !QDELETED(src))
+		take_damage(total_damage, BRUTE, "bomb", 0)
 
 	if(fdist && !QDELETED(src))
 		var/stacks = max(0, (fdist - fodist) * 2)

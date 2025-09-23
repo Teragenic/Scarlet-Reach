@@ -7,8 +7,6 @@
 	category_tags = list(CTAG_BANDIT)
 	cmode_music = 'sound/music/combat_bandit_brigand.ogg'
 
-	spells = list(/obj/effect/proc_holder/spell/targeted/pioneer/plant_bogtrap_delayed)
-
 	subclass_stats = list(
 		STATKEY_INT = 3,
 		STATKEY_LCK = 1,
@@ -19,10 +17,10 @@
 
 	subclass_skills = list(
 		/datum/skill/combat/bows = SKILL_LEVEL_MASTER,
-		/datum/skill/combat/bows = SKILL_LEVEL_MASTER,
+		/datum/skill/combat/crossbows = SKILL_LEVEL_MASTER,
 		/datum/skill/combat/polearms = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/axes = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/daggers = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/craft/crafting = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/craft/carpentry = SKILL_LEVEL_JOURNEYMAN,
@@ -37,6 +35,7 @@
 		/datum/skill/craft/smelting = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/labor/mining = SKILL_LEVEL_JOURNEYMAN
 	)
+
 
 /datum/outfit/job/roguetown/bandit/pioneer/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -67,6 +66,7 @@
 		/obj/item/rogueweapon/tongs = 1
 	)
 	id = /obj/item/scomstone/mattcoin
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/pioneer/plant_bogtrap_delayed)
 
 // Their snowflake mine//
 
@@ -86,21 +86,6 @@
 	miracle = FALSE
 	req_items = list(/obj/item/rogueweapon/shovel/)
 
-/obj/effect/proc_holder/spell/targeted/pioneer/plant_bogtrap_delayed
-	name = "Set Bogtrap (Delayed)"
-	desc = "Arm a bogtrap beneath your feet after careful preparation."
-	range = 0
-	overlay_state = "deploytrap"
-	releasedrain = 0
-	recharge_time = 90 SECONDS
-	max_targets = 0
-	cast_without_targets = TRUE
-	antimagic_allowed = TRUE
-	associated_skill = /datum/skill/craft/traps
-	invocation = "Measure twice… set once."
-	invocation_type = "whisper"
-	miracle = FALSE
-	devotion_cost = 0
 	var/setup_delay = 30 SECONDS
 	var/pending = FALSE
 	var/trap_path = /obj/structure/trap/bogtrap/bomb
