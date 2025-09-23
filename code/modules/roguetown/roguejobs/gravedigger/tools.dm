@@ -345,8 +345,8 @@
 		qdel(src)
 
 /obj/item/rogueweapon/shovel/saperka
-	force = 30
-	force_wielded = 40
+	force = 20
+	force_wielded = 30
 	possible_item_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle, /datum/intent/mace/smash, /datum/intent/shovelscoop)
 	name = "Saperka"
 	desc = "A compact, steel-headed spade favored by pioneers. Scarred by a hundred fieldworks, its socket is nicked from prying and the edge has been honed to bite through roots-or armor-in a pinch."
@@ -364,7 +364,7 @@
 	wdefense = 5
 	swingsound = BLADEWOOSH_MED
 	associated_skill = /datum/skill/combat/axes
-	demolition_mod = 3 // breaks things fast
+	demolition_mod = 7 // breaks things fast
 	resistance_flags = FLAMMABLE
 	blade_dulling = DULLING_SHAFT_WOOD
 	gripped_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle, /datum/intent/mace/smash)
