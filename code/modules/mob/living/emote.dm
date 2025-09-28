@@ -80,13 +80,11 @@
 	message_param = "bows to %t."
 	restraint_check = TRUE
 	emote_type = EMOTE_VISIBLE
+	targetrange = 4
 
-/datum/emote/living/bow/run_emote(mob/user, params, type_override, intentional)
+/datum/emote/living/bow/adjacentaction(mob/user, mob/target)
 	. = ..()
-	if(. && params && isliving(user))
-		var/mob/living/L = user
-		var/list/split_params = splittext(params, " ")
-		var/mob/target = get_target(L, split_params)
+	if(isliving(user))
 		if(target && ishuman(target))
 			var/mob/living/carbon/human/H = target
 			if(HAS_TRAIT(H, TRAIT_NOBLE))
@@ -96,7 +94,7 @@
 	set name = "Bow"
 	set category = "Emotes"
 
-	emote("bow", intentional = TRUE)
+	emote("bow", intentional = TRUE, targetted = TRUE)
 
 /datum/emote/living/burp
 	key = "burp"
