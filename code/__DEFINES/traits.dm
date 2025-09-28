@@ -306,7 +306,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_COUNTERCOUNTERSPELL = span_info("I automatically know when to counter Counterspells, and can do so without even thinking about it."),
 	TRAIT_UNSEEMLY = span_info("My face is ugly and makes everyone who looks at me miserable."),
 	TRAIT_HERETIC_SEER = span_info("I can tell other Ascendant followers without sharing their faith."),
-	TRAIT_DUALWIELDER = span_info("If I wield two identical weapons, I roll twice for my attacks, and so will the enemy against me. On non-armor attacks that land, I roll a 33% chance to strike again at half strength. I do not suffer penalties from using my off-hand in combat."),
+	TRAIT_DUALWIELDER = span_info("If I wield two identical weapons of the same material, I roll twice for my failed attacks. I also roll twice for failed dodges and parries. On attacks that pierce through armor, I roll a 33% chance to strike again at half strength. I do not suffer penalties from using my off-hand in combat."),
 	TRAIT_SENTINELOFWITS = span_info("My Intelligence aids in my defense. Every 2 points above 10 INT become an additional 10% chance to dodge or parry. Does not count positive buffs from potions or substances."),
 	TRAIT_KEENEARS = span_info("I've a good pair of ears, and can tell who is speaking, even when they're out of sight. I can also hear whispers from further away."),
 	TRAIT_SCREENSHAKE = span_suicide("I don't feel very steady anymore..."),
@@ -666,15 +666,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 			if(ishuman(src))
 				var/mob/living/carbon/human/H = src
 				H.update_heretic_commune()*/
-
-///The entity has AI 'access', so is either an AI, has an access wand, or is an admin ghost AI. Used to block off regular Silicons from things.
-///This is put on the mob, it is used on the client for Admins but they are the exception as they use `isAdminGhostAI`.
-#define TRAIT_AI_ACCESS "ai_access_trait"
-#define TRAIT_UI_BLOCKED "uiblocked"
-/// Prevents usage of manipulation appendages (picking, holding or using items, manipulating storage).
-#define TRAIT_HANDS_BLOCKED "handsblocked"
-/// This mob should never close UI even if it doesn't have a client
-#define TRAIT_PRESERVE_UI_WITHOUT_CLIENT "preserve_ui_without_client"
 
 //important_recursive_contents traits
 /*
