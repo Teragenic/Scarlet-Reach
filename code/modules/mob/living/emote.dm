@@ -608,44 +608,6 @@
 
     return TRUE
 
-/mob/living/carbon/human/verb/emote_vomit()
-    set name = "Vomit"
-    set category = "Emotes"
-    emote("vomit", intentional = TRUE)
-
-/datum/emote/living/vomit
-    key = "vomit"
-    nomsg = TRUE
-
-/datum/emote/living/vomit/run_emote(mob/user, params, type_override, intentional, targetted)
-	if(!ishuman(user))
-		return ..()
-
-	var/mob/living/carbon/human/H = user
-
-	H.visible_message(
-		span_warning("[H] sticks two fingers into [H.p_their()] mouth, trying to gag."),
-		span_warning("You stick two fingers into your mouth, trying to gag.")
-	)
-	H.emote("gag")
-
-	if(!do_after(H, 5 SECONDS, H))
-		return FALSE
-
-	H.vomit()
-	H.adjustToxLoss(-10)
-
-	var/datum/reagents/R = null
-	if("bloodstream" in H.vars && istype(H.vars["bloodstream"], /datum/reagents))
-		R = H.vars["bloodstream"]
-	else
-		R = H.reagents
-
-	if(R)
-		R.remove_all_type(/datum/reagent, 3)
-
-	return TRUE
-
 /datum/emote/living/slap
 	key = "slap"
 	key_third_person = "slaps"
