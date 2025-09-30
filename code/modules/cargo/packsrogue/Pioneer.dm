@@ -205,6 +205,11 @@
 	cost = 20
 	contains = list(/obj/item/rogueweapon/tongs)	
 
+/datum/supply_pack/rogue/Pioneer/cogs
+	name = "Cogs"
+	cost = 20
+	contains = list(/obj/item/roguegear = 2)	
+
 /datum/supply_pack/rogue/Pioneer/impactgrenade_explosion
     name = "Impact grenade (explosion)"
     cost = 20
