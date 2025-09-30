@@ -1,10 +1,4 @@
-//////////////////////////
-// Croesus Bomb & Flower Vendor
-// - Принимает /obj/item/roguecoin (get_real_price())
-// - Без сдачи
-// - Цены: flowers=30, grenades/smoke=50, tntstick=100, satchel=300
-// - 2 вкладки: Bombs / Flowers
-//////////////////////////
+//bombs+flowers
 
 /obj/structure/roguemachine/duoface
 	name = "Croesus"
@@ -30,7 +24,7 @@
 		"“Counted on a Medici ledger.”",
 		"“Stamped with the Hanse mark.”"
 	)
-
+// autismo tablets no tab
 	var/list/bombs = list(
 		list("name"="Smoke bomb",               "type"=/obj/item/smokebomb,                 "price"=50),
 		list("name"="Impact grenade (contact)", "type"=/obj/item/impact_grenade/explosion,  "price"=50),
@@ -149,7 +143,7 @@
 		for(var/j = 1, j <= listing2.len, j++)
 			var/list/F = listing2[j]
 			var/name2  = F["name"]
-			var/price2 = F["price"] // 30
+			var/price2 = F["price"] 
 			html += "<tr><td>[name2]</td><td align='right'>[price2]</td><td width='80' align='right'>"
 			if(price2 <= budget)
 				html += "<a href='?src=[REF(src)];buyflower=[j]'>BUY</a>"
@@ -200,7 +194,7 @@
 			return attack_hand(usr)
 
 		var/list/F = flowers[idf]
-		var/price2 = F["price"] // 30
+		var/price2 = F["price"] 
 		var/path2  = F["type"]
 		if(price2 > budget)
 			say("Not enough!")

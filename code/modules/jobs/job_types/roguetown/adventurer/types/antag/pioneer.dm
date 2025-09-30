@@ -12,6 +12,7 @@
 		STATKEY_LCK = 1,
 		STATKEY_STR = 2,
 		STATKEY_CON = 2,
+		STATKEY_PER = 2,
 		STATKEY_END = 2 //a lot of stats but no any traits, literally
 	)
 
