@@ -1244,6 +1244,7 @@
 #include "code\modules\cargo\packsrogue\Knave.dm"
 #include "code\modules\cargo\packsrogue\Knight.dm"
 #include "code\modules\cargo\packsrogue\Mage.dm"
+#include "code\modules\cargo\packsrogue\Pioneer.dm"
 #include "code\modules\cargo\packsrogue\Sawbones.dm"
 #include "code\modules\cargo\packsrogue\Sellsword.dm"
 #include "code\modules\cargo\packsrogue\Things.dm"
