@@ -212,6 +212,10 @@ GLOBAL_LIST_EMPTY(heretical_players)
 	if (stat)
 		return
 
+	if(!(devotion && devotion.devotion >= 750))
+		to_chat(src, span_warning("I need more devotion to channel Her voice! (750 required)"))
+		return FALSE
+
 	var/inputty = input("Excommunicate someone, away from the Ten... Or show to their heretical gods that they are worthy... (excommunicate them again to remove it)", "Sinner Name") as text|null
 
 	if (inputty)
@@ -287,6 +291,10 @@ GLOBAL_LIST_EMPTY(heretical_players)
 
 	if (stat)
 		return
+
+	if(!(devotion && devotion.devotion >= 750))
+		to_chat(src, span_warning("I need more devotion to channel Her voice! (750 required)"))
+		return FALSE
 
 	var/found = FALSE
 	var/inputty = input("Put an apostasy on someone, removing their ability to use miracles... (apostasy them again to remove it)", "Sinner Name") as text|null
@@ -398,6 +406,10 @@ code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep 
 
 	if (stat)
 		return
+
+	if(!(devotion && devotion.devotion >= 750))
+		to_chat(src, span_warning("I need more devotion to channel Her voice! (750 required)"))
+		return FALSE
 
 	var/target_name = input("Who shall receive a curse?", "Target Name") as text|null
 
