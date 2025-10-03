@@ -105,7 +105,12 @@
 		shoes = /obj/item/clothing/shoes/roguetown/boots/nobleboot
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/artificer
 		backl = /obj/item/storage/backpack/rogue/backpack
-		backpack_contents = list(/obj/item/rogueweapon/hammer/iron = 1, /obj/item/rogueweapon/tongs = 1, /obj/item/recipe_book/blacksmithing = 1)
+		backpack_contents = list(/obj/item/rogueweapon/hammer/iron = 1, 
+		/obj/item/rogueweapon/tongs = 1, 
+		/obj/item/recipe_book/blacksmithing = 1,
+		/obj/item/clothing/mask/rogue/spectacles/golden = 1, 
+		/obj/item/contraption/linker/master = 1,
+		)
 		belt = /obj/item/storage/belt/rogue/leather
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/rich
 		beltr = /obj/item/storage/keyring/guildmaster
