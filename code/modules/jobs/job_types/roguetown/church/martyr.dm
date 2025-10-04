@@ -634,6 +634,10 @@
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	flags_inv = HIDECROTCH|HIDEBOOB
 
+/obj/item/clothing/cloak/martyr/ComponentInitialize()
+    . = ..()
+    AddComponent(/datum/component/storage/concrete/roguetown/cloak
+
 /obj/item/clothing/suit/roguetown/armor/plate/full/holysee
 	name = "holy silver plate"
 	desc = "Silver-clad plate for the guardians and the warriors, for the spears and shields of the Ten."
