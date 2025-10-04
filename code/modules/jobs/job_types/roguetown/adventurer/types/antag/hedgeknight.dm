@@ -8,6 +8,11 @@
 	maximum_possible_slots = 1
 	cmode_music = 'sound/music/combat_bandit.ogg'
 
+	disallowed_races = list(
+		/datum/species/harpy,
+		/datum/species/lamia,
+	)
+
 	traits_applied = list(
 		TRAIT_MEDIUMARMOR,
 		TRAIT_HEAVYARMOR,
