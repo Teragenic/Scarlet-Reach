@@ -1,4 +1,4 @@
-#define CHAT_MESSAGE_SPAWN_TIME		0.2 SECONDS
+#define CHAT_MESSAGE_SPAWN_TIME		0.1 SECONDS
 #define CHAT_MESSAGE_LIFESPAN		5 SECONDS
 #define CHAT_MESSAGE_EOL_FADE		0.7 SECONDS
 #define CHAT_MESSAGE_EXP_DECAY		0.7 // Messages decay at pow(factor, idx in stack)
@@ -182,7 +182,7 @@
 	// View the message
 	LAZYADDASSOC(owned_by.seen_messages, message_loc, src)
 	owned_by.images |= message
-	animate(message, alpha = 150, time = CHAT_MESSAGE_SPAWN_TIME)
+	message.alpha = 150
 
 	// Prepare for destruction
 	scheduled_destruction = world.time + (lifespan - CHAT_MESSAGE_EOL_FADE)
