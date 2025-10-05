@@ -26,7 +26,7 @@
 	var/garrisoncolor = DEFAULT_GARRISON_COLOR // NOTE: THIS IS THE SENDER'S COLOR, NOT THE RECEIVER'S
 	var/is_broken = FALSE
 	var/message_received_sound = 'sound/misc/scom.ogg'
-	var/message_received_volume = 100
+	var/message_received_volume = 50 //THIS SHIT GETS LOUD WHEN THE MAPPERS AIN'T THINKING
 	var/target = SCOM_TARGET_COMMONS
 	var/mute_commons = FALSE
 	var/mute_garrison = FALSE
