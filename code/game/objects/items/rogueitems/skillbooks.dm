@@ -169,7 +169,24 @@
 		if(alert("Are you ready to finish your book?", "Writer", "Yes", "No") == "Yes")
 			chosen_icon_state = null
 			var/final_desc = "A book to improve your skills."
+			var/custom_title_chosen = FALSE
+			var/final_name = null
+
 			if(user.real_name in authors)
+				var/obj/item/skillbook/temp_book = new /obj/item/skillbook()//Create a temporary book to get an automatic title
+				temp_book.set_bookstats(skill_req, skill_cap, subject)
+				var/auto_title = temp_book.name
+				qdel(temp_book)
+
+				if(alert("Would you like to choose a custom title for the book?", "Book Title", "Yes", "No") == "Yes")
+					var/new_title = input(user, "Enter book title (max 64 characters):", "Book Title", auto_title) as text|null
+					if(new_title)
+						if(length(new_title) > 64)
+							to_chat(user, span_warning("Title is too long! Maximum 64 characters."))
+							return
+						final_name = new_title
+						custom_title_chosen = TRUE
+
 				if(alert("Would you like to write a custom description for the book?", "Book Description", "Yes", "No") == "Yes")
 					var/new_desc = input(user, "Write the book's description (author information will be added automatically):", "Book Description", final_desc) as message|null
 					if(new_desc)
@@ -218,6 +235,8 @@
 				add_sleep_experience(user, /datum/skill/misc/reading, user.STAINT*1.5)//decently more than writing the book
 				var/obj/item/skillbook/newbook = new /obj/item/skillbook(get_turf(src))
 				newbook.set_bookstats(skill_req,skill_cap,subject)
+				if(custom_title_chosen && final_name)
+					newbook.name = final_name
 				if(chosen_icon_state)
 					newbook.chosen_icon_state = chosen_icon_state
 					newbook.iconval = 0
