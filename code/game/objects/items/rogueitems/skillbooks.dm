@@ -209,19 +209,29 @@
     			"Fancy Book 7" = "book7",
     			"Fancy Book 8" = "book8",
     			"Knowledge Tome" = "knowledge",
-    			"Brown Spellbook" = "spellbookbrown",
-    			"Green Spellbook" = "spellbookgreen",
-    			"Yellow Spellbook" = "spellbookyellow",
-    			"Steel Spellbook" = "spellbooksteel",
-    			"Gem Spellbook" = "spellbookgem",
-    			"Skin Spellbook" = "spellbookskin",
-    			"Mimic Spellbook" = "spellbookmimic",
     			"Swatch Book" = "swatchbook",
     			"Bibble" = "bibble",
     			"Psyble" = "psyble",
     			"Law Tome" = "lawtome",
     			"Ledger" = "ledger"
 			)
+			var/magical_sprites = list(
+				"Brown Spellbook" = "spellbookbrown",
+				"Green Spellbook" = "spellbookgreen",
+				"Yellow Spellbook" = "spellbookyellow",
+				"Steel Spellbook" = "spellbooksteel",
+				"Gem Spellbook" = "spellbookgem",
+				"Skin Spellbook" = "spellbookskin",
+				"Mimic Spellbook" = "spellbookmimic",
+			)
+			var/is_magical_topic = (subject == /datum/skill/magic/arcane || subject == /datum/skill/magic/holy)
+			var/is_legendary_level = (skill_cap >= 6)
+
+			if(is_legendary_level)
+				available_sprites += magical_sprites
+			else if(is_magical_topic && skill_cap >= 3)
+				available_sprites += magical_sprites
+
 			if(HAS_TRAIT(user, TRAIT_GOODWRITER))
 				if(alert("Would you like to choose a book appearance?", "Book Appearance", "Yes", "No") == "Yes")
 					var/sprite_choice = input(user, "Choose book appearance:", "Book Appearance") as null|anything in available_sprites
