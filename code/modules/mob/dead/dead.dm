@@ -1,5 +1,4 @@
-//Dead mobs can exist whenever. This is needful
-
+// Dead mobs can exist whenever. This is needful
 INITIALIZE_IMMEDIATE(/mob/dead)
 
 /mob/dead
@@ -46,7 +45,6 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 	var/oldloc = loc
 	loc = destination
 	Moved(oldloc, NONE, TRUE)
-
 
 /mob/dead/new_player/proc/lobby_refresh()
 	set waitfor = 0
@@ -151,18 +149,6 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 		wanderers_listing += "<br>"
 		job_list.Insert(1, wanderers_listing)
 	dat += job_list
-
-	var/datum/browser/popup = new(src, "lobby_window", "<div align='center'>LOBBY</div>", 330, 430)
-	popup.set_window_options("can_close=1;can_minimize=0;can_maximize=0;can_resize=1;")
-	popup.set_content(dat.Join())
-	if(!client)
-		return
-	if(winexists(src, "lobby_window"))
-		src << browse(popup.get_content(), "window=lobby_window") //dont update the size or annoyingly refresh
-		qdel(popup)
-		return
-	else
-		popup.open(FALSE)
 	var/datum/browser/popup = new(src, "lobby_window", "<div align='center'>LOBBY</div>", 330, 430)
 	popup.set_window_options("can_close=1;can_minimize=0;can_maximize=0;can_resize=1;")
 	popup.set_content(dat.Join())
