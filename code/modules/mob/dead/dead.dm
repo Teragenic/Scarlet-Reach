@@ -91,6 +91,12 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 		for(var/mob/dead/new_player/player in GLOB.player_list)
 			if(!player)
 				continue
+			if(!player.client)
+				continue
+			if(!player.client.prefs)
+				continue
+			if(!islist(player.client.prefs.job_preferences))
+				continue
 			if(player.client.prefs.job_preferences[job.title] == JP_HIGH)
 				if(player.ready == PLAYER_READY_TO_PLAY)
 					readiedas++
@@ -99,11 +105,20 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 							var/thing = "[player.client.prefs.real_name]"
 							if(istype(job, /datum/job/roguetown/hand))
 								if(player != src)
-									if(client.prefs.job_preferences["Grand Duke"] == JP_HIGH)
-										thing = "<a href='byond://?src=[REF(src)];sethand=[player.client.ckey]'>[player.client.prefs.real_name]</a>"
+									if(client && client.prefs && islist(client.prefs.job_preferences))
+										if(client.prefs.job_preferences["Grand Duke"] == JP_HIGH)
+											thing = "<a href='byond://?src=[REF(src)];sethand=[player.client.ckey]'>[player.client.prefs.real_name]</a>"
 								for(var/mob/dead/new_player/Lord in GLOB.player_list)
+									if(!Lord)
+										continue
+									if(!Lord.client)
+										continue
+									if(!Lord.client.prefs)
+										continue
+									if(!islist(Lord.client.prefs.job_preferences))
+										continue
 									if(Lord.client.prefs.job_preferences["Grand Duke"] == JP_HIGH)
-										if(Lord.brohand == player.ckey)
+										if(Lord.brohand == player.client.ckey)
 											thing = "*[thing]*"
 											break
 							if(wanderer_job)
@@ -136,6 +151,18 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 		wanderers_listing += "<br>"
 		job_list.Insert(1, wanderers_listing)
 	dat += job_list
+
+	var/datum/browser/popup = new(src, "lobby_window", "<div align='center'>LOBBY</div>", 330, 430)
+	popup.set_window_options("can_close=1;can_minimize=0;can_maximize=0;can_resize=1;")
+	popup.set_content(dat.Join())
+	if(!client)
+		return
+	if(winexists(src, "lobby_window"))
+		src << browse(popup.get_content(), "window=lobby_window") //dont update the size or annoyingly refresh
+		qdel(popup)
+		return
+	else
+		popup.open(FALSE)
 	var/datum/browser/popup = new(src, "lobby_window", "<div align='center'>LOBBY</div>", 330, 430)
 	popup.set_window_options("can_close=1;can_minimize=0;can_maximize=0;can_resize=1;")
 	popup.set_content(dat.Join())
