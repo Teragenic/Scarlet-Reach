@@ -371,20 +371,14 @@
 			if(STATE_SAFE)
 				end_activation = world.time + safe_duration	//Only a duration and nothing else.
 				adjust_stats(current_state)	//Lowers the damage of the sword due to safe activation.
-				I.max_blade_int = 500				//A burning sword shouldn't get dull easily.
-				I.blade_int = 500
 			if(STATE_MARTYR)
 				end_activation = world.time + martyr_duration
 				I.max_integrity = 2000				//If you're committing, we repair the weapon and give it a boost so it lasts the whole fight
-				I.max_blade_int = 2000
-				I.blade_int = 2000
 				I.obj_integrity = I.max_integrity
 				adjust_stats(current_state)	//Gives them extra stats.
 			if(STATE_MARTYRULT)
 				end_activation = world.time + ultimate_duration
 				I.max_integrity = 9999				//why not, they got 2 mins anyway
-				I.max_blade_int = 9999
-				I.blade_int = 9999
 				I.obj_integrity = I.max_integrity
 				current_holder.STASTR += stat_bonus_martyr
 				current_holder.STASPD += stat_bonus_martyr
