@@ -545,16 +545,17 @@ GLOBAL_LIST(teleport_runes)
 
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning	//32x32 rune t1(one tile)
 	name = "sealate confinement matrix"
-	desc = "An adept confinement matrix improved with the addition of a sealate matrix; used to hold things when summoned."
+	desc = "A relatively basic confinement matrix coupled with a sealate inscryption. Used to bind summoned creachers, holding them in place."
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "sealate"
 	runesize = 1
-	ritual_number = 1
+	ritual_number = TRUE
 	tier = 1
 	pixel_x = -32 //So the big ol' 96x96 sprite shows up right
 	pixel_y = -32
 	pixel_z = 0
 	can_be_scribed = TRUE
+	invocation = "Rhegal vex'ultraa!"
 	var/summoning = FALSE
 	var/mob/living/simple_animal/summoned_mob
 
