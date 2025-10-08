@@ -9,7 +9,6 @@
 	traits_applied = list(TRAIT_HEAVYARMOR, TRAIT_DISGRACED_NOBLE)
 
 	disallowed_races = list(
-		/datum/species/lamia,
 		/datum/species/harpy,
 	)
 

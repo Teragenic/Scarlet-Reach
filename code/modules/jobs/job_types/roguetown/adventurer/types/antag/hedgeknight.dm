@@ -10,7 +10,6 @@
 
 	disallowed_races = list(
 		/datum/species/harpy,
-		/datum/species/lamia,
 	)
 
 	traits_applied = list(
