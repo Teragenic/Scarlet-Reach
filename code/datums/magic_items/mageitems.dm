@@ -82,7 +82,7 @@
 		to_chat(user, span_cult("Nothing comes in mind to draw with the chalk."))
 		return
 	var/obj/effect/decal/cleanable/roguerune/pickrune
-	var/runenameinput = input(user, "Runes", "Tier 1 and 2 Runes") as null|anything in GLOB.t2rune_types
+	var/runenameinput = input(user, "Runes", "Tier 1 Runes") as null|anything in GLOB.t1rune_types
 	testing("runenameinput [runenameinput]")
 	pickrune = GLOB.rune_types[runenameinput]
 	rune_to_scribe = pickrune
@@ -162,7 +162,7 @@
 		is_bled = TRUE
 		return
 	var/obj/effect/decal/cleanable/roguerune/pickrune
-	var/runenameinput = input(user, "Runes", "T4 Runes") as null|anything in GLOB.t4rune_types
+	var/runenameinput = input(user, "Runes", "T3 Runes") as null|anything in GLOB.t3rune_types
 	testing("runenameinput [runenameinput]")
 	pickrune = GLOB.rune_types[runenameinput]
 	rune_to_scribe = pickrune
@@ -177,7 +177,7 @@
 		to_chat(user, span_cult("There is a structure, rune or wall in the way."))
 		return
 	if(initial(rune_to_scribe.req_keyword))
-		chosen_keyword = stripped_input(user, "Keyword for the new rune", "T4 Runes", max_length = MAX_NAME_LEN)
+		chosen_keyword = stripped_input(user, "Keyword for the new rune", "T3 Runes", max_length = MAX_NAME_LEN)
 		if(!chosen_keyword)
 			return FALSE
 	var/crafttime = (100 - ((user.get_skill_level(/datum/skill/magic/arcane))*5))

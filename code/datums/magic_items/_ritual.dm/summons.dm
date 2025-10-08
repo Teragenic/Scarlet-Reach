@@ -35,7 +35,7 @@
 	name = "T2 - hellhound"
 	desc = "summons a hellhound"
 	blacklisted = FALSE
-	tier = 2
+	tier = 1
 	required_atoms = list(/obj/item/magic/infernal/ash = 3, /obj/item/magic/obsidian = 2, /obj/item/magic/melded/t1 = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/infernal/hellhound
 
@@ -43,7 +43,7 @@
 	name = "T3 - infernal watcher"
 	desc = "summons an infernal watcher"
 	blacklisted = FALSE
-	tier = 3
+	tier = 2
 	required_atoms = list(/obj/item/magic/infernal/fang = 2, /obj/item/magic/obsidian = 2, /obj/item/magic/melded/t2 =1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/infernal/watcher
 
@@ -51,7 +51,7 @@
 	name = "T4 - fiend"
 	desc = "summons a fiend"
 	blacklisted = FALSE
-	tier = 4
+	tier = 3
 	required_atoms = list(/obj/item/magic/infernal/core = 1, /obj/item/magic/obsidian = 3, /obj/item/magic/melded/t3 =1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/infernal/fiend
 
@@ -67,7 +67,7 @@
 	name = "T2 - glimmerwing"
 	desc = "summons a fae spirit"
 	blacklisted = FALSE
-	tier = 2
+	tier = 1
 	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/manabloom = 2, /obj/item/magic/fae/dust = 3, /obj/item/magic/melded/t1 = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/fae/glimmerwing
 
@@ -75,7 +75,7 @@
 	name = "T3 - dryad"
 	desc = "summons a drayd"
 	blacklisted = FALSE
-	tier = 3
+	tier = 2
 	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/manabloom = 2, /obj/item/magic/fae/scale = 2, /obj/item/magic/melded/t2 = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad
 
@@ -83,7 +83,7 @@
 	name = "T4 - sylph"
 	desc = "summons an archfae"
 	blacklisted = FALSE
-	tier = 4
+	tier = 3
 	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/manabloom = 1, /obj/item/magic/fae/core = 1, /obj/item/magic/melded/t3 = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/fae/sylph
 
@@ -99,7 +99,7 @@
 	name = "T2 - elemental warden"
 	desc = "summons an elemental"
 	blacklisted = FALSE
-	tier = 2
+	tier = 1
 	required_atoms = list(/obj/item/magic/elemental/mote = 3, /obj/item/magic/manacrystal = 2, /obj/item/magic/melded/t1 = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/elemental/warden
 
@@ -107,7 +107,7 @@
 	name = "T3 - elemental behemoth"
 	desc = "summons a large elemental"
 	blacklisted = FALSE
-	tier = 3
+	tier = 2
 	required_atoms = list(/obj/item/magic/elemental/shard = 2, /obj/item/magic/manacrystal = 2, /obj/item/magic/melded/t2 =1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth
 
@@ -115,7 +115,7 @@
 	name = "T4 - elemental colossus"
 	desc = "summons an huge elemental"
 	blacklisted = FALSE
-	tier = 4
+	tier = 3
 	required_atoms = list(/obj/item/magic/elemental/fragment = 1, /obj/item/magic/manacrystal = 1, /obj/item/magic/melded/t3 =1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/elemental/colossus
 
@@ -123,6 +123,6 @@
 	name = "T4 - abberant from the void"
 	desc = "summons a long forgotten creature"
 	blacklisted = FALSE
-	tier = 4
+	tier = 3
 	required_atoms = list(/obj/item/magic/melded/t5 =1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/voiddragon

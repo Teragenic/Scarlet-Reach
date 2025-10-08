@@ -7,45 +7,51 @@
 	experimental_inhand = FALSE
 
 /obj/item/ritechalk/attack_self(mob/living/user)
-	if(!HAS_TRAIT(user, TRAIT_RITUALIST))
+	if(!HAS_TRAIT(user, TRAIT_RITUALIST) && !((user.get_skill_level(/datum/skill/magic/arcane)) > SKILL_LEVEL_NONE))
 		to_chat(user, span_smallred("I don't know what I'm doing with this..."))
 		return
 
 	var/ritechoices = list()
-	switch (user.patron?.type)
-		if(/datum/patron/inhumen/graggar)
-			ritechoices+="Rune of Violence"
-		if(/datum/patron/inhumen/zizo)
-			ritechoices+="Rune of ZIZO" 
-		if(/datum/patron/inhumen/matthios)
-			ritechoices+="Rune of Transaction" 
-		if(/datum/patron/inhumen/baotha) 
-			ritechoices+="Rune of Desire"
-		if(/datum/patron/divine/astrata)
-			ritechoices+="Rune of Sun"
-		if(/datum/patron/divine/noc)
-			ritechoices+="Rune of Moon"
-		if(/datum/patron/divine/dendor)
-			ritechoices+="Rune of Beasts"
-		if(/datum/patron/divine/malum)
-			ritechoices+="Rune of Forge"
-		if(/datum/patron/divine/xylix)
-			ritechoices+="Rune of Trickery"
-		if(/datum/patron/divine/necra)
-			ritechoices+="Rune of Death"
-		if(/datum/patron/divine/pestra)
-			ritechoices+="Rune of Plague"
-		if(/datum/patron/divine/eora)
-			ritechoices+="Rune of Love"
-		if(/datum/patron/divine/ravox)
-			ritechoices+="Rune of Justice"
-		if(/datum/patron/divine/abyssor)
-			ritechoices+="Rune of Storm"
-		if(/datum/patron/old_god)
-			ritechoices+="Rune of Enduring"
+	if(HAS_TRAIT(user, TRAIT_RITUALIST))
+		switch (user.patron?.type)
+			if(/datum/patron/inhumen/graggar)
+				ritechoices+="Rune of Violence"
+			if(/datum/patron/inhumen/zizo)
+				ritechoices+="Rune of ZIZO" 
+			if(/datum/patron/inhumen/matthios)
+				ritechoices+="Rune of Transaction" 
+			if(/datum/patron/inhumen/baotha) 
+				ritechoices+="Rune of Desire"
+			if(/datum/patron/divine/astrata)
+				ritechoices+="Rune of Sun"
+			if(/datum/patron/divine/noc)
+				ritechoices+="Rune of Moon"
+			if(/datum/patron/divine/dendor)
+				ritechoices+="Rune of Beasts"
+			if(/datum/patron/divine/malum)
+				ritechoices+="Rune of Forge"
+			if(/datum/patron/divine/xylix)
+				ritechoices+="Rune of Trickery"
+			if(/datum/patron/divine/necra)
+				ritechoices+="Rune of Death"
+			if(/datum/patron/divine/pestra)
+				ritechoices+="Rune of Plague"
+			if(/datum/patron/divine/eora)
+				ritechoices+="Rune of Love"
+			if(/datum/patron/divine/ravox)
+				ritechoices+="Rune of Justice"
+			if(/datum/patron/divine/abyssor)
+				ritechoices+="Rune of Storm"
+			if(/datum/patron/old_god)
+				ritechoices+="Rune of Enduring"
+
+	if((user.get_skill_level(/datum/skill/magic/arcane)) > SKILL_LEVEL_NONE)
+		ritechoices += "Confinement Matrix, Weak"
+		ritechoices += "Imbuement Array, Low"
+		ritechoices += "Wall Accession Matrix, Weak"
 
 	var/runeselection = input(user, "Which rune shall I inscribe?", src) as null|anything in ritechoices
-	var/turf/step_turf = get_step(get_turf(user), user.dir)
+	var/turf/step_turf = get_turf(user)
 	switch(runeselection)
 		if("Rune of Sun")
 			to_chat(user,span_cultsmall("I begin inscribing the rune of Her Radiance..."))
@@ -122,3 +128,18 @@
 			if(do_after(user, 30, src))
 				playsound(src, 'sound/foley/scribble.ogg', 40, TRUE)
 				new /obj/structure/ritualcircle/baotha(step_turf)
+		if("Confinement Matrix, Weak")
+			to_chat(user,span_cultsmall("I whip out my dih and start slapping it on the ground..."))
+			if(do_after(user, 30, src))
+				playsound(src, 'sound/foley/scribble.ogg', 40, TRUE)
+				new /obj/effect/decal/cleanable/roguerune/arcyne/summoning(step_turf)
+		if("Imbuement Array, Low")
+			to_chat(user,span_cultsmall("I whip out my dih and start slapping it on the ground..."))
+			if(do_after(user, 30, src))
+				playsound(src, 'sound/foley/scribble.ogg', 40, TRUE)
+				new /obj/effect/decal/cleanable/roguerune/arcyne/enchantment(step_turf)
+		if("Wall Accession Matrix, Weak")
+			to_chat(user,span_cultsmall("I whip out my dih and start slapping it on the ground..."))
+			if(do_after(user, 30, src))
+				playsound(src, 'sound/foley/scribble.ogg', 40, TRUE)
+				new /obj/effect/decal/cleanable/roguerune/arcyne/wall(step_turf)
