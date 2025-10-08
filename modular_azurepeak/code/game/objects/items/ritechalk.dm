@@ -128,18 +128,58 @@
 			if(do_after(user, 30, src))
 				playsound(src, 'sound/foley/scribble.ogg', 40, TRUE)
 				new /obj/structure/ritualcircle/baotha(step_turf)
+
 		if("Confinement Matrix, Weak")
-			to_chat(user,span_cultsmall("I whip out my dih and start slapping it on the ground..."))
-			if(do_after(user, 30, src))
+			var/obj/effect/decal/cleanable/roguerune/arcyne/summoning/rune = /obj/effect/decal/cleanable/roguerune/arcyne/summoning
+			var/structures_in_way = check_for_structures_and_closed_turfs(user.loc, rune)
+			if(structures_in_way)
+				to_chat(user, span_cult("There is a structure, rune or wall in the way."))
+				return
+			user.visible_message(span_cultsmall("\The [user] begins to drag [user.p_their()] [name] over \the [step_turf], inscribing intricate symbols and sigils inside a circle."), span_cultsmall("I start to drag my [name] over \the [step_turf], inscribing intricate symbols and sigils on a circle."))
+			playsound(user, 'sound/magic/chalkdraw.ogg', 100, TRUE)
+			if(do_after(user, 40, src))
+				user.visible_message(span_warning("[user] draws an arcyne rune with [user.p_their()] [name]!"), \
+				span_cultsmall("I finish tracing ornate symbols and circles with my [name], leaving behind a ritual rune."))
 				playsound(src, 'sound/foley/scribble.ogg', 40, TRUE)
-				new /obj/effect/decal/cleanable/roguerune/arcyne/summoning(step_turf)
+				new rune(step_turf)
 		if("Imbuement Array, Low")
-			to_chat(user,span_cultsmall("I whip out my dih and start slapping it on the ground..."))
-			if(do_after(user, 30, src))
+			var/obj/effect/decal/cleanable/roguerune/arcyne/enchantment/rune = /obj/effect/decal/cleanable/roguerune/arcyne/enchantment
+			var/structures_in_way = check_for_structures_and_closed_turfs(user.loc, rune)
+			if(structures_in_way)
+				to_chat(user, span_cult("There is a structure, rune or wall in the way."))
+				return
+			user.visible_message(span_cultsmall("\The [user] begins to drag [user.p_their()] [name] over \the [step_turf], inscribing intricate symbols and sigils inside a circle."), span_cultsmall("I start to drag my [name] over \the [step_turf], inscribing intricate symbols and sigils on a circle."))
+			playsound(user, 'sound/magic/chalkdraw.ogg', 100, TRUE)
+			if(do_after(user, 40, src))
+				user.visible_message(span_warning("[user] draws an arcyne rune with [user.p_their()] [name]!"), \
+				span_cultsmall("I finish tracing ornate symbols and circles with my [name], leaving behind a ritual rune."))
 				playsound(src, 'sound/foley/scribble.ogg', 40, TRUE)
-				new /obj/effect/decal/cleanable/roguerune/arcyne/enchantment(step_turf)
+				new rune(step_turf)
 		if("Wall Accession Matrix, Weak")
-			to_chat(user,span_cultsmall("I whip out my dih and start slapping it on the ground..."))
-			if(do_after(user, 30, src))
+			var/obj/effect/decal/cleanable/roguerune/arcyne/wall/rune = /obj/effect/decal/cleanable/roguerune/arcyne/wall
+			var/structures_in_way = check_for_structures_and_closed_turfs(user.loc, rune)
+			if(structures_in_way)
+				to_chat(user, span_cult("There is a structure, rune or wall in the way."))
+				return
+			user.visible_message(span_cultsmall("\The [user] begins to drag [user.p_their()] [name] over \the [step_turf], inscribing intricate symbols and sigils inside a circle."), span_cultsmall("I start to drag my [name] over \the [step_turf], inscribing intricate symbols and sigils on a circle."))
+			playsound(user, 'sound/magic/chalkdraw.ogg', 100, TRUE)
+			if(do_after(user, 40, src))
+				user.visible_message(span_warning("[user] draws an arcyne rune with [user.p_their()] [name]!"), \
+				span_cultsmall("I finish tracing ornate symbols and circles with my [name], leaving behind a ritual rune."))
 				playsound(src, 'sound/foley/scribble.ogg', 40, TRUE)
-				new /obj/effect/decal/cleanable/roguerune/arcyne/wall(step_turf)
+				new rune(step_turf)
+
+/obj/item/ritechalk/proc/check_for_structures_and_closed_turfs(loc, var/obj/effect/decal/cleanable/roguerune/rune_to_scribe)
+	for(var/turf/T in range(loc, rune_to_scribe.runesize))
+		//check for /sturcture subtypes in the turf's contents
+		for(var/obj/structure/S in T.contents)
+			return TRUE		//Found a structure, no need to continue
+
+		//check if turf itself is a /turf/closed subtype
+		if(istype(T,/turf/closed))
+			return TRUE
+		//check if rune in the turfs contents
+		for(var/obj/effect/decal/cleanable/roguerune/R in T.contents)
+			return TRUE
+		//Return false if nothing in range was found
+	return FALSE

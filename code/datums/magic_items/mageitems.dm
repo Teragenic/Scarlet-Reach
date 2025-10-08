@@ -123,7 +123,6 @@
 		//Return false if nothing in range was found
 	return FALSE
 
-
 /obj/item/rogueweapon/huntingknife/idagger/silver/arcyne
 	name = "arcyne silver dagger"
 	desc = "This dagger glows a faint purple. Quicksilver runs across its blade."
