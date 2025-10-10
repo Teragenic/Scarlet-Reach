@@ -99,7 +99,7 @@ GLOBAL_LIST(teleport_runes)
 	RETURN_TYPE(/list)
 	var/list/runes = list()
 	for(var/obj/effect/decal/cleanable/roguerune/rune as anything in subtypesof(/obj/effect/decal/cleanable/roguerune))
-		if(rune.tier > 1)
+		if(rune.tier > 2)
 			continue
 		if(!initial(rune.can_be_scribed))
 			continue
@@ -110,7 +110,7 @@ GLOBAL_LIST(teleport_runes)
 	RETURN_TYPE(/list)
 	var/list/runes = list()
 	for(var/obj/effect/decal/cleanable/roguerune/rune as anything in subtypesof(/obj/effect/decal/cleanable/roguerune))
-		if(rune.tier > 2)
+		if(rune.tier > 3)
 			continue
 		if(!initial(rune.can_be_scribed))
 			continue
@@ -194,7 +194,6 @@ GLOBAL_LIST(teleport_runes)
 				to_chat(user, span_hierophant_warning("Your ritual rune is not strong enough to perform this ritual."))
 				rune_in_use = FALSE
 				return
-			to_chat(world, "pickritual1 [pickritual1]")
 			invoke(invokers, pickritual1)
 		else
 			to_chat(user, span_danger("You need [req_invokers - length(invokers)] more adjacent invokers to use this rune in such a manner."))	//Needs more invokers, fails invoke
@@ -337,7 +336,7 @@ GLOBAL_LIST(teleport_runes)
 
 
 /obj/effect/decal/cleanable/roguerune/arcyne/enchantment
-	name = "Imbuement Array"
+	name = "imbuement array"
 	desc = "arcane symbols pulse upon the ground..."
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "imbuement"
@@ -369,7 +368,7 @@ GLOBAL_LIST(teleport_runes)
 	do_invoke_glow()
 
 /obj/effect/decal/cleanable/roguerune/arcyne/enchantment/greater	//used for better quality of learning, grants temporary 2 minute INT bonus.
-	name = "Greater Imbuement Array"
+	name = "greater imbuement array"
 	desc = "arcane symbols pulse upon the ground..."
 	icon = 'icons/effects/160x160.dmi'
 	icon_state = "imbuement"
@@ -550,7 +549,7 @@ GLOBAL_LIST(teleport_runes)
 	icon_state = "sealate"
 	runesize = 1
 	ritual_number = TRUE
-	tier = 1
+	tier = 2
 	pixel_x = -32 //So the big ol' 96x96 sprite shows up right
 	pixel_y = -32
 	pixel_z = 0
@@ -621,27 +620,13 @@ GLOBAL_LIST(teleport_runes)
 			anticheese.ChangeTurf(/turf/open/floor/rogue/blocks)
 			continue
 
-/*
-/obj/effect/decal/cleanable/roguerune/arcyne/summoning/mid// 96x96 rune t2(3x3 tile)
-	name = "sealate confinement matrix"
-	desc = "An adept confinement matrix improved with the addition of a sealate matrix; used to hold things when summoned."
-	icon = 'icons/effects/96x96.dmi'
-	icon_state = "sealate"
-	runesize = 1
-	tier = 2
-	pixel_x = -32 //So the big ol' 96x96 sprite shows up right
-	pixel_y = -32
-	pixel_z = 0
-	can_be_scribed = TRUE
-*/
-
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning/adv	//160x160 rune t2(5x5 tile)
 	name = "warded sealate confinement matrix"
 	desc = "A thoroughly warded confinement matrix improved with the addition of a sealate matrix; used to hold larger, dangerous things when summoned."
 	icon = 'icons/effects/160x160.dmi'
 	icon_state = "warded"
 	runesize = 2
-	tier = 2
+	tier = 3
 	pixel_x = -64 //So the big ol' 160x160 sprite shows up right
 	pixel_y = -64
 	pixel_z = 0
@@ -654,7 +639,7 @@ GLOBAL_LIST(teleport_runes)
 	icon_state = "huge_runeblued"
 	runesize = 3
 	req_invokers = 3
-	tier = 3
+	tier = 4
 	pixel_x = -96 //So the big ol' 96x96 sprite shows up right
 	pixel_y = -96
 	pixel_z = 0
