@@ -9,8 +9,8 @@
 	icon_living = "noc_guard"
 	icon_dead = "head_s"
 	turns_per_move = 1
-	response_help_continuous = "brushes aside"
-	response_help_simple = "brush aside"
+	response_help_continuous = "passes through"
+	response_help_simple = "pass through"
 	response_disarm_continuous = "flails at"
 	response_disarm_simple = "flail at"
 	gender = FEMALE
@@ -18,20 +18,21 @@
 /// watcher copypaste with some adjustments, health and stats
 
 	emote_hear = null
-	emote_see = null
-	speak_chance = 1
+	emote_see = list("floats hauntingly","ponders", "chuckles softly", "stares longingly")
+	speak_emote = list("proposes", "denounces", "whispers")
+	speak_chance = 100
 	turns_per_move = 2
 	see_in_dark = 12
 	move_to_delay = 5
-	base_intents = list(/datum/intent/simple/bite)
+	base_intents = list(/datum/intent/simple/claw/wraith)
 	butcher_results = list()
-	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	mob_biotypes = MOB_SPIRIT
 	health = 400 // WATCHER is 600
 	maxHealth = 400
 	melee_damage_lower = 20
 	melee_damage_upper = 30
-	vision_range = 7
-	aggro_vision_range = 9
+	vision_range = 9
+	aggro_vision_range = 12
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	simple_detect_bonus = 20
 	retreat_distance = 4
@@ -49,10 +50,10 @@
 	retreat_health = 0.3
 	food = 0
 	attack_sound = list('sound/misc/lava_death.ogg')
-	dodgetime = 30
+	dodgetime = 20
 	aggressive = 0
 	ranged = TRUE
-	ranged_cooldown = 30
+	ranged_cooldown = 25
 	projectiletype = /obj/projectile/magic/aoe/fireball/rogue/fireball_noc
 
 /// custom stuff
@@ -61,15 +62,22 @@
 	is_flying_animal = TRUE
 	mob_size = MOB_SIZE_TINY
 	ventcrawler = VENTCRAWLER_ALWAYS
-	pass_flags = PASSTABLE
+	pass_flags = PASSTABLE|PASSGRILLE
 	faction = list()
 	alpha = 15
 //	var/mob/living/simple_animal/hostile/retaliate/rogue/summoned_target
 	var/summoned_slaughter = TRUE
 	see_invisible = TRUE
-	light_power = 1
+	light_power = 0.25
 	light_outer_range =  5
 	light_color = LIGHT_COLOR_DARK_BLUE
+	minbodytemp = 0
+	incorporeal_move = INCORPOREAL_MOVE_BASIC
+	dodging = TRUE
+	spacewalk = TRUE
+	stat_attack = UNCONSCIOUS // do we kill till they are dead?.
+	patron = /datum/patron/divine/noc
+	mob_size = MOB_SIZE_TINY
 
 /// STUFF THAT SUMMONS DIRECTLY UPON USE, GYATT DAYUMN!! ///
 
@@ -96,6 +104,19 @@
 
 		invoker.mind.current.faction += "[invoker.real_name]_faction"
 		var/mob/living/simple_animal/hostile/retaliate/rogue/arcane/noc_guard/guard = new /mob/living/simple_animal/hostile/retaliate/rogue/arcane/noc_guard(invoker_turf)
+		qdel(src)
+
+		animate(guard, alpha = 125, time = 20, easing = EASE_IN, flags = ANIMATION_PARALLEL)
+		sleep(25)
+		guard.alpha = 125
+		guard.summoned_slaughter = FALSE
+
+		if(((invoker.get_skill_level(/datum/skill/magic/arcane)) == SKILL_LEVEL_NONE) || (invoker.summons_under.len >= 2))
+			to_chat(invoker, span_hierophant("The apparition is before me, yet it does not recognize me as it's master!"))
+			guard.Retaliate()
+			guard.GiveTarget(invoker)
+			return
+
 		guard.faction += "[invoker.real_name]_faction"
 		invoker.summons_under += guard
 		guard.summoner = invoker
@@ -104,16 +125,6 @@
 			invoker.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/noc_guard_attack)
 			invoker.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/noc_guard_relocate)
 			invoker.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/noc_guard_pacify)
-
-		qdel(src)
-
-		animate(guard, alpha = 165, time = 20, easing = EASE_IN, flags = ANIMATION_PARALLEL)
-		sleep(25)
-		guard.alpha = 165
-//		animate(guard)
-
-		guard.summoned_slaughter = FALSE
-
 	else
 		return
 
@@ -122,17 +133,19 @@
 	var/turf/deathspot = get_turf(src)
 	if(summoned_slaughter)
 		new /obj/item/summoner_relics/noc_guard_crystal(deathspot)
-	var/mob/living/carbon/human/invoker = summoner
-	if(invoker.summons_under.len == 0)
-		invoker.mind.RemoveSpell(/obj/effect/proc_holder/spell/invoked/noc_guard_attack)
-		invoker.mind.RemoveSpell(/obj/effect/proc_holder/spell/invoked/noc_guard_relocate)
-		invoker.mind.RemoveSpell(/obj/effect/proc_holder/spell/invoked/noc_guard_pacify)
+	if(src.summoner)
+		var/mob/living/carbon/human/invoker = src.summoner
+		if(invoker.summons_under.len == 0)
+			invoker.mind.RemoveSpell(/obj/effect/proc_holder/spell/invoked/noc_guard_attack)
+			invoker.mind.RemoveSpell(/obj/effect/proc_holder/spell/invoked/noc_guard_relocate)
+			invoker.mind.RemoveSpell(/obj/effect/proc_holder/spell/invoked/noc_guard_pacify)
+		if(src in invoker.summons_under)
+			invoker.summons_under -= src
 	var/obj/effect/particle_effect/blueshatter/shatter = new /obj/effect/particle_effect/blueshatter(deathspot)
-	say("S T A T U S: C R I T I C A L", spans = list(SPAN_MACHINA))
+	src.say("S T A T U S: C R I T I C A L", spans = list(SPAN_MACHINA))
 	playsound(deathspot, 'sound/misc/carriage2.ogg', 100)
 	update_icon()
-	spill_embedded_objects()
-	sleep(5)
+	sleep(1)
 	qdel(src)
 	sleep(8)
 	qdel(shatter)

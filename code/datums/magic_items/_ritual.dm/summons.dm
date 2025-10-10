@@ -19,10 +19,9 @@
 			var/turf/invoker_turf = get_step(get_turf(user), user.dir)
 			guard = new /mob/living/simple_animal/hostile/retaliate/rogue/arcane/noc_guard(invoker_turf)
 			guard.apply_guard_stuff()
-			animate(guard, alpha = 165, time = 20, easing = EASE_IN, flags = ANIMATION_PARALLEL)
+			animate(guard, alpha = 125, time = 20, easing = EASE_IN, flags = ANIMATION_PARALLEL)
 			sleep(25)
-			guard.alpha = 165
-
+			guard.alpha = 125
 			guard.say("T H R E A T  D E T E C T E D", spans = list(SPAN_MACHINA))
 			sleep(25)
 		summoned = new mob_to_summon(loc)
