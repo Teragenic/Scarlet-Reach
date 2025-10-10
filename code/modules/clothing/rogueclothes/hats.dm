@@ -1902,7 +1902,7 @@
 	item_state = "grenzelhat"
 	icon = 'icons/roguetown/clothing/head.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
-	slot_flags = ITEM_SLOT_HEAD
+	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
 	detail_tag = "_detail"
 	altdetail_tag = "_detailalt"
 	dynamic_hair_suffix = ""
