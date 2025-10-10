@@ -21,6 +21,13 @@
 			guard.apply_guard_stuff()
 			animate(guard, alpha = 125, time = 20, easing = EASE_IN, flags = ANIMATION_PARALLEL)
 			sleep(25)
+		//extinguish lights and shit ; stolen from zizo snuff lights
+			for(var/obj/O in range(9, user))	
+				O.extinguish()
+			for(var/mob/M in range(9, user))
+				for(var/obj/O in M.contents)
+					O.extinguish()
+		//light extinguish stop
 			guard.alpha = 125
 			guard.say("T H R E A T  D E T E C T E D", spans = list(SPAN_MACHINA))
 			sleep(25)

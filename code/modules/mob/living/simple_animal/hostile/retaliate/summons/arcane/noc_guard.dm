@@ -68,16 +68,15 @@
 //	var/mob/living/simple_animal/hostile/retaliate/rogue/summoned_target
 	var/summoned_slaughter = TRUE
 	see_invisible = TRUE
-	light_power = 0.25
-	light_outer_range =  5
-	light_color = LIGHT_COLOR_DARK_BLUE
+	light_power = 1
+	light_outer_range =  2
+	light_color = "#243453"
 	minbodytemp = 0
 	incorporeal_move = INCORPOREAL_MOVE_BASIC
 	dodging = TRUE
 	spacewalk = TRUE
 	stat_attack = UNCONSCIOUS // do we kill till they are dead?.
 	patron = /datum/patron/divine/noc
-	mob_size = MOB_SIZE_TINY
 
 /// STUFF THAT SUMMONS DIRECTLY UPON USE, GYATT DAYUMN!! ///
 

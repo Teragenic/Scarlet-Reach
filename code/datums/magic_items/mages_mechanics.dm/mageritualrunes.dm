@@ -81,6 +81,7 @@ GLOBAL_LIST_INIT(rune_types, generate_rune_types())
 GLOBAL_LIST_INIT(t1rune_types, generate_t1rune_types())
 GLOBAL_LIST_INIT(t2rune_types, generate_t2rune_types())
 GLOBAL_LIST_INIT(t3rune_types, generate_t3rune_types())
+GLOBAL_LIST_INIT(t4rune_types, generate_t4rune_types())
 
 /// List of all teleport runes
 GLOBAL_LIST(teleport_runes)
@@ -99,7 +100,7 @@ GLOBAL_LIST(teleport_runes)
 	RETURN_TYPE(/list)
 	var/list/runes = list()
 	for(var/obj/effect/decal/cleanable/roguerune/rune as anything in subtypesof(/obj/effect/decal/cleanable/roguerune))
-		if(rune.tier > 2)
+		if(rune.tier > 1)
 			continue
 		if(!initial(rune.can_be_scribed))
 			continue
@@ -110,7 +111,7 @@ GLOBAL_LIST(teleport_runes)
 	RETURN_TYPE(/list)
 	var/list/runes = list()
 	for(var/obj/effect/decal/cleanable/roguerune/rune as anything in subtypesof(/obj/effect/decal/cleanable/roguerune))
-		if(rune.tier > 3)
+		if(rune.tier > 2)
 			continue
 		if(!initial(rune.can_be_scribed))
 			continue
@@ -118,6 +119,17 @@ GLOBAL_LIST(teleport_runes)
 	return runes
 
 /proc/generate_t3rune_types()
+	RETURN_TYPE(/list)
+	var/list/runes = list()
+	for(var/obj/effect/decal/cleanable/roguerune/rune as anything in subtypesof(/obj/effect/decal/cleanable/roguerune))
+		if(rune.tier > 3)
+			continue
+		if(!initial(rune.can_be_scribed))
+			continue
+		runes[initial(rune.name)] = rune // Uses the invoker name for displaying purposes
+	return runes
+
+/proc/generate_t4rune_types()
 	RETURN_TYPE(/list)
 	var/list/runes = list()
 	for(var/obj/effect/decal/cleanable/roguerune/rune as anything in subtypesof(/obj/effect/decal/cleanable/roguerune))
@@ -164,26 +176,31 @@ GLOBAL_LIST(teleport_runes)
 			var/list/rituals = list()
 			if(istype(src, /obj/effect/decal/cleanable/roguerune/arcyne/summoning))
 				var/tier = src.tier
-				if(tier == 3)
+				if(tier >= 4)
 					rituals += GLOB.t4summoningrunerituallist
-				else if(tier == 2)
+				else if(tier == 3)
 					rituals += GLOB.t3summoningrunerituallist
+				else if(tier == 2)
+					rituals += GLOB.t2summoningrunerituallist
 				else if(tier == 1)
 					rituals += GLOB.t1summoningrunerituallist
-					rituals += GLOB.t2summoningrunerituallist
+
 			else if(istype(src,/obj/effect/decal/cleanable/roguerune/arcyne/wall))
 				var/tier = src.tier
 				if(tier >= 3)
 					rituals += GLOB.t4wallrunerituallist
 				else
 					rituals += GLOB.t2wallrunerituallist
+
 			else if(istype(src,/obj/effect/decal/cleanable/roguerune/arcyne/enchantment))
 				if(tier >= 3)
 					rituals += GLOB.t4enchantmentrunerituallist
 				else
 					rituals += GLOB.t2enchantmentrunerituallist
+
 			else if(istype(src,/obj/effect/decal/cleanable/roguerune/arcyne))
 				rituals += GLOB.allowedrunerituallist
+
 			var/ritualnameinput = input(user, "Rituals", "") as null|anything in rituals
 			var/datum/runeritual/pickritual1
 			pickritual1 = rituals[ritualnameinput]
@@ -334,7 +351,6 @@ GLOBAL_LIST(teleport_runes)
 		return
 	. = ..()
 
-
 /obj/effect/decal/cleanable/roguerune/arcyne/enchantment
 	name = "imbuement array"
 	desc = "arcane symbols pulse upon the ground..."
@@ -348,7 +364,6 @@ GLOBAL_LIST(teleport_runes)
 	layer = SIGIL_LAYER
 	can_be_scribed = TRUE
 	ritual_number = TRUE
-
 
 /obj/effect/decal/cleanable/roguerune/arcyne/enchantment/invoke(list/invokers, datum/runeritual/runeritual)
 	if(!..())	//VERY important. Calls parent and checks if it fails. parent/invoke has all the checks for ingredients
@@ -543,18 +558,13 @@ GLOBAL_LIST(teleport_runes)
 	do_invoke_glow()
 
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning	//32x32 rune t1(one tile)
-	name = "sealate confinement matrix"
-	desc = "A relatively basic confinement matrix coupled with a sealate inscryption. Used to bind summoned creachers, holding them in place."
-	icon = 'icons/effects/96x96.dmi'
-	icon_state = "sealate"
-	runesize = 1
+	name = "confinement matrix"
+	desc = "A relatively basic confinement matrix used to hold small things when summoned."
 	ritual_number = TRUE
-	tier = 2
-	pixel_x = -32 //So the big ol' 96x96 sprite shows up right
-	pixel_y = -32
-	pixel_z = 0
-	can_be_scribed = TRUE
+	icon_state = "summon"
 	invocation = "Rhegal vex'ultraa!"
+	tier = 1
+	can_be_scribed = TRUE
 	var/summoning = FALSE
 	var/mob/living/simple_animal/summoned_mob
 
@@ -619,6 +629,18 @@ GLOBAL_LIST(teleport_runes)
 			anticheese.visible_message(span_warning("[anticheese] crumbles under the force of the releasing wards."))
 			anticheese.ChangeTurf(/turf/open/floor/rogue/blocks)
 			continue
+
+/obj/effect/decal/cleanable/roguerune/arcyne/summoning/mid// 96x96 rune t2(3x3 tile)
+	name = "sealate confinement matrix"
+	desc = "An adept confinement matrix improved with the addition of a sealate matrix; used to hold things when summoned."
+	icon = 'icons/effects/96x96.dmi'
+	icon_state = "sealate"
+	runesize = 1
+	tier = 2
+	pixel_x = -32 //So the big ol' 96x96 sprite shows up right
+	pixel_y = -32
+	pixel_z = 0
+	can_be_scribed = TRUE
 
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning/adv	//160x160 rune t2(5x5 tile)
 	name = "warded sealate confinement matrix"
