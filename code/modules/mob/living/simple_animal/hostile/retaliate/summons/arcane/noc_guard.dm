@@ -198,6 +198,7 @@
 		for(var/mob/living/simple_animal/hostile/retaliate/rogue/arcane/noc_guard/guard in invoker.summons_under)
 			guard.Retaliate()
 			guard.GiveTarget(target)
+			guard.say("S T A T U S: E N G A G E D", spans = list(SPAN_MACHINA))
 
 /obj/effect/proc_holder/spell/invoked/noc_guard_relocate
 	name = "Guard Relocate"
@@ -215,6 +216,7 @@
 		for(var/mob/living/simple_animal/hostile/retaliate/rogue/arcane/noc_guard/guard in invoker.summons_under)
 			guard.forceMove(target)
 			playsound(target, 'modular_azurepeak/sound/spellbooks/crystal.ogg', 75)
+			guard.say("R E L O C A T I N G", spans = list(SPAN_MACHINA))
 
 /obj/effect/proc_holder/spell/invoked/noc_guard_pacify
 	name = "Guard Pacify"
@@ -233,6 +235,7 @@
 			if(target in invoker.summons_under)
 				target.enemies = list()
 				target.LoseTarget()
+				target.say("S T A T U S: D I S E N G A G E D", spans = list(SPAN_MACHINA))
 			else
 				to_chat(user, "The apparition defies me, for I am not it's master!")
 		else
