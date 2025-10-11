@@ -269,8 +269,8 @@
 		)
 
 	if(H.mind)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mockery) //kind of feels like a thing a trickster would have. The spellsinger gets the spellblade weapon conjuring spells, so maybe crossover is okay?
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/lesserknock) 
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/slick_trick_small) //gimmick spell. 1 tile slick trick. honk!
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/lesserknock) //they're a magic thief. i mean come on
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/invisibility) //with apprentice arcane this is like... 15 seconds of invisibility?
 
 	H.cmode_music = 'sound/music/combat_rogue.ogg' //someone should really replace this aislop track with something good tbh
