@@ -250,7 +250,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	name = "Cyclops (R)"
 	desc = "I lost my right eye long ago."
 
-/datum/charflaw/noeyer/on_mob_creation(mob/user)
+/datum/charflaw/noeyer/flaw_on_life(mob/user)
 	..()
 	if(!ishuman(user))
 		return
@@ -265,7 +265,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	name = "Cyclops (L)"
 	desc = "I lost my left eye long ago."
 
-/datum/charflaw/noeyel/on_mob_creation(mob/user)
+/datum/charflaw/noeyel/flaw_on_life(mob/user)
 	..()
 	if(!ishuman(user))
 		return
