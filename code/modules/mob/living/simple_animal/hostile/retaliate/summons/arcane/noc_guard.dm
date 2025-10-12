@@ -53,7 +53,7 @@
 	dodgetime = 20
 	aggressive = 0
 	ranged = TRUE
-	ranged_cooldown = 25
+	ranged_cooldown = 30 
 	projectiletype = /obj/projectile/magic/aoe/fireball/rogue/fireball_noc
 
 /// custom stuff
@@ -77,6 +77,8 @@
 	spacewalk = TRUE
 	stat_attack = UNCONSCIOUS // do we kill till they are dead?.
 	patron = /datum/patron/divine/noc
+	density = FALSE // oh mama? might be problematic idk
+	limb_destroyer = TRUE
 
 /// STUFF THAT SUMMONS DIRECTLY UPON USE, GYATT DAYUMN!! ///
 
@@ -105,9 +107,9 @@
 		var/mob/living/simple_animal/hostile/retaliate/rogue/arcane/noc_guard/guard = new /mob/living/simple_animal/hostile/retaliate/rogue/arcane/noc_guard(invoker_turf)
 		qdel(src)
 
-		animate(guard, alpha = 125, time = 20, easing = EASE_IN, flags = ANIMATION_PARALLEL)
+		animate(guard, alpha = 155, time = 20, easing = EASE_IN, flags = ANIMATION_PARALLEL)
 		sleep(25)
-		guard.alpha = 125
+		guard.alpha = 155
 		guard.summoned_slaughter = FALSE
 
 		if(((invoker.get_skill_level(/datum/skill/magic/arcane)) == SKILL_LEVEL_NONE) || (invoker.summons_under.len >= 2))
@@ -134,12 +136,11 @@
 		new /obj/item/summoner_relics/noc_guard_crystal(deathspot)
 	if(src.summoner)
 		var/mob/living/carbon/human/invoker = src.summoner
+		invoker.summons_under -= src
 		if(invoker.summons_under.len == 0)
 			invoker.mind.RemoveSpell(/obj/effect/proc_holder/spell/invoked/noc_guard_attack)
 			invoker.mind.RemoveSpell(/obj/effect/proc_holder/spell/invoked/noc_guard_relocate)
 			invoker.mind.RemoveSpell(/obj/effect/proc_holder/spell/invoked/noc_guard_pacify)
-		if(src in invoker.summons_under)
-			invoker.summons_under -= src
 	var/obj/effect/particle_effect/blueshatter/shatter = new /obj/effect/particle_effect/blueshatter(deathspot)
 	src.say("S T A T U S: C R I T I C A L", spans = list(SPAN_MACHINA))
 	playsound(deathspot, 'sound/misc/carriage2.ogg', 100)
