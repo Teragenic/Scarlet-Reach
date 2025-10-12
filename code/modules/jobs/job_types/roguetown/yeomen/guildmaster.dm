@@ -114,6 +114,8 @@
 		belt = /obj/item/storage/belt/rogue/leather
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/rich
 		beltr = /obj/item/storage/keyring/guildmaster
+	ADD_TRAIT(H, TRAIT_MASTER_CARPENTER, TRAIT_GENERIC)		
+	ADD_TRAIT(H, TRAIT_MASTER_MASON, TRAIT_GENERIC)	
 
 GLOBAL_VAR_INIT(last_guildmaster_announcement, -50000) // Inits variable for later
 
