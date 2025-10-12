@@ -383,17 +383,14 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			C.dna.organ_dna[slot] = new_dna
 
 /datum/species/proc/apply_organ_stuff_species(mob/living/carbon/C)
-	var/list/organs_to_regenerate = list()
 	var/obj/item/organ/organ
 	var/obj/item/organ/organ_new
 
 	for(organ in C.internal_organs)
 		if(organ.should_regenerate)
-			organs_to_regenerate += organ
-	for(organ in organs_to_regenerate)
-		organ_new = organ
-		qdel(organ)
-		organ_new.Insert(C, TRUE, FALSE)
+			organ_new = organ
+			qdel(organ)
+			organ_new.Insert(C, TRUE, FALSE)
 
 /datum/species/proc/random_character(mob/living/carbon/human/H)
 	H.real_name = random_name(H.gender,1)
