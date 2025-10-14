@@ -182,3 +182,12 @@
 	screen_max_rows = 8
 	screen_max_columns = 6
 
+/datum/component/storage/concrete/roguetown/dice_pouch
+	screen_max_rows = 4
+	screen_max_columns = 2
+	max_w_class = WEIGHT_CLASS_TINY
+	not_while_equipped = FALSE
+
+/datum/component/storage/concrete/roguetown/dice_pouch/New(datum/P, ...)
+	. = ..()
+	can_hold = typecacheof(list(/obj/item/dice))
