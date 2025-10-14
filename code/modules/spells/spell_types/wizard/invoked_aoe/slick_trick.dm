@@ -63,13 +63,13 @@
 /obj/effect/proc_holder/spell/invoked/slick_trick_small
 	name = "Calistra's Sneaky Slipsquare" //honoring DnD tradition of naming shit after some random MF. who's Calistra? who knows! make some shit up, roleplayer!
 	desc = "Sneakily create a temporary slippery square that sends victims flying to the floor."
-	cost = 3 //not intended to be learned by people, gimmick spell for arcane trickster (like spellblade's magic slash)
-	range = 4
+	cost = 2 
+	range = 6 //slightly bigger range for prank purposes
 	ignore_los = FALSE
 	releasedrain = 25 //half cost bc it's way smaller
 	chargedrain = 2
-	chargetime = 2 SECONDS //half charge bc it's just one tile
-	recharge_time = 30 SECONDS //smaller cooldown, but not TOO slow
+	chargetime = 20 //repel-sized
+	recharge_time = 30 SECONDS //smaller cooldown
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
