@@ -6,4 +6,4 @@
 /datum/virtue/movement/swimmer
 	name = "Adept Swimmer"
 	desc = "Whether by genetics or frequent exposure, I am more capable of swimming through water."
-	added_skills = list(list(/datum/skill/misc/swimming, 2, 6))
+	added_skills = list(list(/datum/skill/misc/swimming, 2, 4))
