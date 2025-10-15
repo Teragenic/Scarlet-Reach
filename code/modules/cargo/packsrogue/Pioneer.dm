@@ -252,10 +252,10 @@
 
 /datum/supply_pack/rogue/Pioneer/blackpowder_stick
     name = "Blackpowder stick"
-    cost = 50
+    cost = 65
     contains = list(/obj/item/tntstick)
 
 /datum/supply_pack/rogue/Pioneer/bomb_satchel
     name = "Bomb satchel"
-    cost = 100
+    cost = 125
     contains = list(/obj/item/satchel_bomb)

@@ -34,8 +34,8 @@
 		list("name"="Impact grenade (fire)",    "type"=/obj/item/impact_grenade/fire_gas,   "price"=50),
 		list("name"="Impact grenade (blind)",   "type"=/obj/item/impact_grenade/blind_gas,  "price"=50),
 		list("name"="Impact grenade (mute)",    "type"=/obj/item/impact_grenade/mute_gas,   "price"=50),
-		list("name"="Blackpowder stick",        "type"=/obj/item/tntstick,                  "price"=100),
-		list("name"="Bomb satchel",             "type"=/obj/item/satchel_bomb,              "price"=300)
+		list("name"="Blackpowder stick",        "type"=/obj/item/tntstick,                  "price"=150),
+		list("name"="Bomb satchel",             "type"=/obj/item/satchel_bomb,              "price"=375)
 	)
 
 	var/list/flowers = list(

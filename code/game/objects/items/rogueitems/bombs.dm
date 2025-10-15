@@ -174,8 +174,8 @@
 				snuff()
 			else
 				explosion(T, devastation_range = 2, heavy_impact_range = 3, light_impact_range = 4, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
-				qdel(src) //go into walls /turf/closed/wall/ and see /turf/closed/wall/ex_act. Its bounded with /proc/explosion
-		else
+				qdel(src) //IMPORTANT!! go into walls /turf/closed/wall/ and see /turf/closed/wall/ex_act. Its bounded with /proc/explosion. Same for /obj/structure and /obj/structure/ex_act because if you going to fuck intergity or whatever this shit called players will skin you alive for breaking their equipment and keys
+		else //also /turf/open/floor/ex_act for comment above
 			if(prob(prob2fail))
 				snuff()
 

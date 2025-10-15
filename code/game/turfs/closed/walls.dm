@@ -111,7 +111,7 @@
 	var/total_damage = round(CLAMP(brute_loss + extra_integrity, 0, max_integrity))
 
 	if(total_damage > 0 && !QDELETED(src))
-		take_damage(total_damage, BRUTE, "bomb", 0)
+		take_damage(total_damage, BRUTE, "blunt", 0)
 
 	if(fdist && !QDELETED(src))
 		var/stacks = max(0, (fdist - fodist) * 2)
