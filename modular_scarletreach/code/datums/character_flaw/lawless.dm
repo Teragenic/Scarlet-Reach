@@ -47,6 +47,10 @@
 
 		if (face_known == "Yes")
 			add_bounty(user.real_name, bounty_total, FALSE, my_crime, bounty_poster)
+			if (bounty_poster == "The Justiciary of Scarlet Reach")
+				GLOB.outlawed_players += user.real_name
+			else
+				GLOB.excommunicated_players += user.real_name
 		else
 			var/race = user.dna.species
 			var/gender = user.gender
