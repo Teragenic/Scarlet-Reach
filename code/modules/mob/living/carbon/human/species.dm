@@ -384,13 +384,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 /datum/species/proc/apply_organ_stuff_species(mob/living/carbon/C)
 	var/obj/item/organ/organ
-	var/obj/item/organ/organ_new
 
 	for(organ in C.internal_organs)
 		if(organ.should_regenerate)
-			organ_new = organ
-			qdel(organ)
-			organ_new.Insert(C, TRUE, FALSE)
+			organ.Insert(C, TRUE, FALSE)
 
 /datum/species/proc/random_character(mob/living/carbon/human/H)
 	H.real_name = random_name(H.gender,1)
