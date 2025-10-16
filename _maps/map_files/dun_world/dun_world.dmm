@@ -57615,6 +57615,10 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave/orcdungeon)
+"qjV" = (
+/obj/structure/roguemachine/duoface,
+/turf/closed/wall/mineral/rogue/stone,
+/area/rogue/outdoors/beach)
 "qjW" = (
 /turf/open/lava/nosmooth,
 /area/rogue/outdoors/mountains/decap/gunduzirak)
@@ -291698,7 +291702,7 @@ euk
 euk
 icp
 pFN
-icp
+crl
 icp
 icp
 icp
@@ -292150,7 +292154,7 @@ euk
 euk
 euk
 icp
-icp
+qjV
 icp
 icp
 icp
