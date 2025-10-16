@@ -143,23 +143,11 @@
 /datum/component/storage/concrete/grid/magebag/New(datum/P, ...)
 	. = ..()
 	set_holdable(list(
-		/obj/item/magic/infernal/ash,
-		/obj/item/magic/infernal/fang,
-		/obj/item/magic/infernal/core,
-		/obj/item/magic/infernal/flame,
-		/obj/item/magic/fae/dust,
-		/obj/item/magic/fae/scale,
-		/obj/item/magic/fae/core,
-		/obj/item/magic/fae/essence,
-		/obj/item/magic/elemental/mote,
-		/obj/item/magic/elemental/shard,
-		/obj/item/magic/elemental/fragment,
-		/obj/item/magic/elemental/relic,
-		/obj/item/magic/obsidian,
-		/obj/item/magic/leyline,
 		/obj/item/reagent_containers/food/snacks/grown/manabloom,
-		/obj/item/magic/manacrystal,
 		/obj/item/ash,
+		/obj/item/natural/stone,
+		/obj/item/reagent_containers/food/snacks/grown/berries/rogue,
+		/obj/item/magic
 		))
 
 /datum/component/storage/concrete/roguetown/saddle
@@ -167,9 +155,20 @@
 	screen_max_columns = 4
 	max_w_class = WEIGHT_CLASS_NORMAL
 
-/datum/component/storage/tray
+/datum/component/storage/concrete/tray
 	insert_preposition = "on"
 	max_w_class = WEIGHT_CLASS_NORMAL
+	screen_max_rows = 3
+	screen_max_columns = 4
+	allow_quick_gather = TRUE
+	allow_quick_empty = TRUE
+	allow_dump_out = TRUE
+	dump_time = 40
+	collection_mode = COLLECT_SAME
+
+/datum/component/storage/concrete/tray/New(datum/P, ...)
+	. = ..()
+	can_hold = typecacheof(list(/obj/item/cooking, /obj/item/reagent_containers/glass/bowl, /obj/item/reagent_containers/glass/cup, /obj/item/kitchen, /obj/item/reagent_containers/food, /obj/item/reagent_containers/glass/bottle))
 
 /datum/component/storage/concrete/grid/headhook
 	max_w_class = WEIGHT_CLASS_NORMAL
@@ -194,3 +193,12 @@
 	screen_max_rows = 8
 	screen_max_columns = 6
 
+/datum/component/storage/concrete/roguetown/dice_pouch
+	screen_max_rows = 4
+	screen_max_columns = 2
+	max_w_class = WEIGHT_CLASS_TINY
+	not_while_equipped = FALSE
+
+/datum/component/storage/concrete/roguetown/dice_pouch/New(datum/P, ...)
+	. = ..()
+	can_hold = typecacheof(list(/obj/item/dice))

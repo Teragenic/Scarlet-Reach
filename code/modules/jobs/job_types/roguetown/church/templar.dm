@@ -27,7 +27,10 @@
 	)
 
 	//No nobility for you, being a member of the clergy means you gave UP your nobility. It says this in many of the church tutorial texts.
-	virtue_restrictions = list(/datum/virtue/utility/noble)
+	virtue_restrictions = list(
+		/datum/virtue/utility/noble,
+		/datum/virtue/utility/blueblooded,
+	)
 
 /datum/outfit/job/roguetown/templar
 	job_bitflag = BITFLAG_CHURCH
@@ -268,9 +271,9 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltr = /obj/item/storage/keyring/churchie
+	beltl = /obj/item/rogueweapon/scabbard/sword
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 	armor = /obj/item/clothing/suit/roguetown/armor/plate	///Half-Plate not fullplate
-	r_hand = /obj/item/rogueweapon/scabbard/sword
 	backpack_contents = list(
 		/obj/item/ritechalk,
 		/obj/item/storage/belt/rogue/pouch/coins/mid,

@@ -112,6 +112,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Volf Helm"
 	path = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 
+/datum/loadout_item/papakha
+	name = "Papakha"
+	path = /obj/item/clothing/head/roguetown/papakha
+
 //CLOAKS
 /datum/loadout_item/tabard
 	name = "Tabard"
@@ -452,6 +456,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Spectacles"
 	path = /obj/item/clothing/mask/rogue/spectacles
 
+/datum/loadout_item/spectacles_clear
+	name = "Clear Spectacles"
+	path = /obj/item/clothing/mask/rogue/spectacles/clear
+
 /datum/loadout_item/fingerless
 	name = "Fingerless Gloves"
 	path = /obj/item/clothing/gloves/roguetown/fingerless
@@ -459,6 +467,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/exoticsilkbelt
 	name = "Exotic Silk Belt"
 	path = /obj/item/storage/belt/rogue/leather/exoticsilkbelt
+
+/datum/loadout_item/clothsash
+	name = "Cloth Sash"
+	path = /obj/item/storage/belt/rogue/leather/sash
 
 /datum/loadout_item/ragmask
 	name = "Rag Mask"
@@ -654,3 +666,43 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/chain_leash
 	name = "Chain Leash"
 	path = /obj/item/leash/chain
+
+/datum/loadout_item/magic_recipes
+	name = "Guide to Arcyne"
+	path = /obj/item/recipe_book/magic
+
+/datum/loadout_item/alch_recipes
+	name = "Guide to Alchemy"
+	path = /obj/item/recipe_book/alchemy
+
+/datum/loadout_item/leather_recipes
+	name = "Guide to Leatherworking"
+	path = /obj/item/recipe_book/leatherworking
+
+/datum/loadout_item/sewing_recipes
+	name = "Guide to Tailoring"
+	path = /obj/item/recipe_book/sewing
+
+/datum/loadout_item/smith_recipes
+	name = "Guide to Smithing"
+	path = /obj/item/recipe_book/blacksmithing
+
+/datum/loadout_item/engi_recipes
+	name = "Guide to Engineering"
+	path = /obj/item/recipe_book/engineering
+
+/datum/loadout_item/build_recipes
+	name = "Guide to Building"
+	path = /obj/item/recipe_book/builder
+
+/datum/loadout_item/potter_recipes
+	name = "Guide to Pottery"
+	path = /obj/item/recipe_book/ceramics
+
+/datum/loadout_item/survival_recipes
+	name = "Guide to Survival"
+	path = /obj/item/recipe_book/survival
+
+/datum/loadout_item/cooking_recipes
+	name = "Guide to Cooking"
+	path = /obj/item/recipe_book/cooking
