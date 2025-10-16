@@ -45,17 +45,15 @@
 			if(/datum/patron/old_god)
 				ritechoices += "Rune of Enduring"
 
-	var/rune_name
 	var/list/runes_to_draw = list()
 	var/list/runes_to_draw_names = list()
 
 	if((user.get_skill_level(/datum/skill/magic/arcane)) > SKILL_LEVEL_NONE)
 		for(var/obj/effect/decal/cleanable/roguerune/arcyne/rune as null|anything in subtypesof(/obj/effect/decal/cleanable/roguerune/arcyne))
 			if(rune.tier <= 2)
-				rune_name = rune.name
 				runes_to_draw += rune
-				ritechoices += "[rune_name]"
-				runes_to_draw_names += "[rune_name]"
+				ritechoices += "[rune.name]"
+				runes_to_draw_names += "[rune.name]"
 
 	var/runeselection = input(user, "Which rune shall I inscribe?", src) as null|anything in ritechoices
 	var/turf/step_turf = get_turf(user)
