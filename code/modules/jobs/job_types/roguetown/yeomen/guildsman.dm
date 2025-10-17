@@ -157,7 +157,7 @@
 						/obj/item/recipe_book/magic = 1,
 						/obj/item/clothing/mask/rogue/spectacles/golden = 1,
 						/obj/item/contraption/linker,
-						/obj/item/chalk = 1,
+						/obj/item/ritechalk = 1,
 						)
 	// Not a real mage, no free spell point. Take Arcyne Potential if you want it.
 	if(H.mind)
