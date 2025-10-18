@@ -27,6 +27,7 @@
 		/datum/skill/craft/crafting = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/craft/carpentry = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/labor/lumberjacking = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/lockpicking = SKILL_LEVEL_JOURNEYMAN,
@@ -36,6 +37,7 @@
 		/datum/skill/craft/weaponsmithing = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/craft/smelting = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/labor/mining = SKILL_LEVEL_JOURNEYMAN
+		
 	)
 
 
