@@ -570,8 +570,12 @@
 	max_integrity = 100
 	armor = ARMOR_MASK_METAL
 	flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
+	adjustable = CAN_CADJUST
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	sellprice = 0
+
+/obj/item/clothing/mask/rogue/lordmask/naledi/ComponentInitialize()
+	AddComponent(/datum/component/adjustable_clothing, NECK, null, null, 'sound/foley/equip/rummaging-03.ogg', null, (UPD_HEAD|UPD_MASK))	//Standard mask
 
 /obj/item/clothing/mask/rogue/exoticsilkmask
 	name = "exotic silk mask"
