@@ -630,6 +630,10 @@
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	flags_inv = HIDECROTCH|HIDEBOOB
 
+/obj/item/clothing/cloak/martyr/ComponentInitialize()
+    . = ..()
+    AddComponent(/datum/component/storage/concrete/roguetown/cloak)
+
 /obj/item/clothing/suit/roguetown/armor/plate/full/holysee
 	name = "holy silver plate"
 	desc = "Silver-clad plate for the guardians and the warriors, for the spears and shields of the Ten."
@@ -695,6 +699,10 @@
 	flags_inv = HIDECROTCH|HIDEBOOB
 	var/overarmor = TRUE
 	sellprice = 300
+
+/obj/item/clothing/cloak/holysee/ComponentInitialize()
+    . = ..()
+    AddComponent(/datum/component/storage/concrete/roguetown/cloak)
 
 /obj/item/clothing/cloak/holysee/MiddleClick(mob/user)
 	overarmor = !overarmor
