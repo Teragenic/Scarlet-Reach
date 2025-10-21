@@ -103,8 +103,8 @@
 		"Porcelain <span style='border: 1px solid #161616; background-color: #[DOLL_PORCELAIN];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>" = DOLL_PORCELAIN,
 		"Sienna <span style='border: 1px solid #161616; background-color: #[DOLL_SIENNA];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>" = DOLL_SIENNA,
 		"Lotus <span style='border: 1px solid #161616; background-color: #[DOLL_KAZENGUN];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>" = DOLL_KAZENGUN,
-		"Scarlet Reach <span style='border: 1px solid #161616; background-color: #[DOLL_SCARLET_REACH];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>" = DOLL_PORCELAIN,
-		"Walnut <span style='border: 1px solid #161616; background-color: #[DOLL_WALNUT];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>" = DOLL_SIENNA,
+		"Scarlet Reach <span style='border: 1px solid #161616; background-color: #[DOLL_SCARLET_REACH];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>" = DOLL_SCARLET_REACH,
+		"Walnut <span style='border: 1px solid #161616; background-color: #[DOLL_WALNUT];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>" = DOLL_WALNUT,
 		"Gloom <span style='border: 1px solid #161616; background-color: #[DOLL_GLOOMHAVEN];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>" = DOLL_GLOOMHAVEN,
 		"Ebon <span style='border: 1px solid #161616; background-color: #[DOLL_EBON];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>" = DOLL_EBON,
 	)
