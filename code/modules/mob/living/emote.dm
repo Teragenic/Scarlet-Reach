@@ -535,7 +535,7 @@
 			do_change = TRUE
 		if(!do_change)
 			if(J.pulling == target)
-				do_change = TRUEE
+				do_change = TRUE
 		if(do_change)
 			if(J.zone_selected == BODY_ZONE_PRECISE_MOUTH)
 				message_param = "licks %t's lips."
