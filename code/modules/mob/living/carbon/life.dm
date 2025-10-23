@@ -1,4 +1,4 @@
-/mob/living/carbon/Life()
+/mob/living/carbon/Life(seconds, times_fired)
 	set invisibility = 0
 
 	if(notransform)
@@ -27,22 +27,13 @@
 	if(bprv & BODYPART_LIFE_UPDATE_HEALTH)
 		update_stamina() //needs to go before updatehealth to remove stamcrit
 		updatehealth()
-	update_stress()
+	if (times_fired % 3 == 0) // every 3rd tick, fire stress handler. it isn't time-critical, so we don't particularly need it to go EVERY tick
+		update_stress()
 	handle_nausea()
-	if((blood_volume > BLOOD_VOLUME_SURVIVE) || HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE))
-		if(!heart_attacking)
-			if(oxyloss)
-				adjustOxyLoss(-1.6)
-		else
-			if(getOxyLoss() < 20)
-				heart_attacking = FALSE
 
 	handle_sleep()
 
 	handle_brain_damage()
-
-
-	check_cremation()
 
 	if(stat != DEAD)
 		return 1
@@ -569,6 +560,9 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 */
 
 /mob/living/carbon/proc/handle_sleep()
+	if (!client) // not really relevant to NPCs at the moment
+		return
+
 	if(HAS_TRAIT(src, TRAIT_NOSLEEP) && !(mobility_flags & MOBILITY_STAND))
 		energy_add(5)
 		if(mind?.has_antag_datum(/datum/antagonist/vampirelord/lesser))
