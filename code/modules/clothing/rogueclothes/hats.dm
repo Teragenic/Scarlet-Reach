@@ -1938,7 +1938,7 @@
 // Grenzel unique drip head. Pretend it is a secrete (A type of hat with a hidden helmet underneath). Same stats as kettle
 /obj/item/clothing/head/roguetown/grenzelhofthat
 	name = "grenzelhoft plume hat"
-	desc = "Whether it's monsters or fair maidens, a true Grenzelhoftian slays both. This hat contains a hidden metallic cap underneath to protect the head from blows."
+	desc = "Whether it's monsters or fair maidens, a true Grenzelhoftian slays both. This hat contains a hidden metallic cap underneath to protect the head from blow, this hat can also be worn with a helmet on."
 	icon_state = "grenzelhat"
 	item_state = "grenzelhat"
 	icon = 'icons/roguetown/clothing/head.dmi'
